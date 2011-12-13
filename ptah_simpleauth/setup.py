@@ -17,9 +17,9 @@ test_requires = [
     'pyramid',]
 
 
-setup(name='ptah201',
-      version='0.0',
-      description='ptah201',
+setup(name='ptah_simpleauth',
+      version='0.1',
+      description='ptah_simpleauth',
       long_description=README + '\n\n' +  CHANGES,
       classifiers=[
         "Programming Language :: Python",
@@ -39,9 +39,9 @@ setup(name='ptah201',
       test_suite = 'nose.collector',
       entry_points = """\
         [paste.app_factory]
-        main = ptah201.app:main
+        main = ptah_simpleauth.app:main
         [ptah]
-        package = ptah201
+        package = ptah_simpleauth
       """,
       paster_plugins=['pyramid'],
       )
