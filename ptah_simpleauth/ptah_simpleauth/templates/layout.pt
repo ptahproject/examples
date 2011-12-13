@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Ptah 201</title>
+    <title>Ptah Simpleauth</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 
     ${view.include('jquery')}
@@ -12,7 +12,7 @@
     <div class="topbar">
       <div class="topbar-inner">
         <div class="container-fluid">
-          <a class="brand" href="/">Project ptah201</a>
+          <a class="brand" href="/">Project ptah_simpleauth</a>
           <ul class="nav">
             <li class="active"><a href="/">Home</a></li>
             <li><a href="/contact-us.html">Contact</a></li>
