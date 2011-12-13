@@ -1,2 +1,2 @@
 include *.txt *.ini *.cfg *.rst
-recursive-include ptah201 *.ico *.png *.css *.gif *.jpg *.pt *.txt *.mak *.mako *.js *.html *.xml
+recursive-include ptah_simpleauth *.ico *.png *.css *.gif *.jpg *.pt *.txt *.mak *.mako *.js *.html *.xml
