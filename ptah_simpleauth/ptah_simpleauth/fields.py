@@ -4,16 +4,16 @@ from ptah import form
 # register colorpicker assets as library
 ptah.library(
     'colorpicker',
-    path=('ptah201:static/colorpicker/js/colorpicker.js',
-          'ptah201:static/colorpickerjs/eye.js',
-          'ptah201:static/colorpickerjs/utils.js'),
+    path=('ptah_simpleauth:static/colorpicker/js/colorpicker.js',
+          'ptah_simpleauth:static/colorpickerjs/eye.js',
+          'ptah_simpleauth:static/colorpickerjs/utils.js'),
     type="js",
     require="jquery")
 
 ptah.library(
     'colorpicker',
-    path=('ptah201:static/colorpicker/css/colorpicker.css',
-          'ptah201:static/colorpicker/css/layout.css',
+    path=('ptah_simpleauth:static/colorpicker/css/colorpicker.css',
+          'ptah_simpleauth:static/colorpicker/css/layout.css',
           ),
     type='css')
 
@@ -25,8 +25,8 @@ class ColorPickerField(form.InputField):
     klass = u'colorpicker-widget'
     value = u''
 
-    tmpl_input = "ptah201:templates/colorpicker-input.pt"
-    tmpl_display = "ptah201:templates/colorpicker-display.pt"
+    tmpl_input = "ptah_simpleauth:templates/colorpicker-input.pt"
+    tmpl_display = "ptah_simpleauth:templates/colorpicker-display.pt"
 
 
 @form.fieldpreview(ColorPickerField)

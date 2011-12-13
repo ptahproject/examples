@@ -7,16 +7,16 @@ from pyramid.traversal import DefaultRootFactory
 import ptah
 from ptah import form
 
-from ptah201 import models
+from ptah_simpleauth import models
 
 # logger, check Debug Toolbar logging section or stdout
 log = logging.getLogger(__name__)
 
 
 @ptah.layout(context=models.Link,
-             renderer='ptah201:templates/layout.pt', use_global_views=True)
+             renderer='ptah_simpleauth:templates/layout.pt', use_global_views=True)
 @ptah.layout(context=DefaultRootFactory,
-             renderer='ptah201:templates/layout.pt', use_global_views=True)
+             renderer='ptah_simpleauth:templates/layout.pt', use_global_views=True)
 class Layout(ptah.View):
     """ simple layout """
 
@@ -43,7 +43,7 @@ class Telephone(form.Regex):
 # This is a "class view", you do not need to use a class for your 
 # view. You can use a Function view as provided below.
 
-@view_config(renderer='ptah201:templates/homepage.pt',
+@view_config(renderer='ptah_simpleauth:templates/homepage.pt',
              wrapper=ptah.wrap_layout(), route_name='root')
 class HomepageView(object):
     """ Homepage view """

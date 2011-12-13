@@ -7,7 +7,7 @@ import ptah
 from ptah import form
 
 
-@view_config(route_name='login', renderer='ptah201:templates/login.pt',
+@view_config(route_name='login', renderer='ptah_simpleauth:templates/login.pt',
              wrapper=ptah.wrap_layout())
 def login_form(request):
     login_form = form.Form(None, request)

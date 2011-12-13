@@ -5,7 +5,7 @@ import sqlalchemy as sqla
 class Link(ptah.cms.Node):
     """ A basic model. """
     
-    __tablename__ = 'ptah201_links'
+    __tablename__ = 'ptah_simpleauth_links'
    
     # Required primary field
     __id__ = sqla.Column('id', sqla.Integer,

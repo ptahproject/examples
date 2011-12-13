@@ -7,10 +7,10 @@ from pyramid.session import UnencryptedCookieSessionFactoryConfig
 import ptah
 
 # Your custom auth plugin
-from ptah201.auth import User, Session
+from ptah_simpleauth.auth import User, Session
 
 # Import models
-from ptah201 import models
+from ptah_simpleauth import models
 
 auth_policy = AuthTktAuthenticationPolicy('secret')
 session_factory = UnencryptedCookieSessionFactoryConfig('secret')
