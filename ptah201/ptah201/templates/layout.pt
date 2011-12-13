@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Ptah 201</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+
+    ${view.include('jquery')}
+    ${view.include('bootstrap')}
+    <tal:block content="structure view.render_includes()" />
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="container-fluid">
+          <a class="brand" href="/">Project ptah201</a>
+          <ul class="nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/contact-us.html">Contact</a></li>
+          </ul>
+          <p class="pull-right" tal:condition="view.user is not None">
+	    Logged in as 
+	    <a href="#">${view.user.name}</a>
+	    <a href="/logout.html">Logout</a></p>
+          <p class="pull-right" tal:condition="view.user is None">
+	    <a href="/login.html">Login</a>
+	  </p>
+	</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 60px;">
+      <div class="container-fluid">
+	<div class="sidebar">
+	  <div class="well">
+	    <h5>Links</h5>
+	    <ul>
+	      <li tal:repeat="link view.links">
+		<a style="color:${link.color};" 
+		   href="${link.href}">${link.title}</a>
+		<span class="label success">
+		  <a href="/links/${link.__id__}/edit">edit</a>
+		</span>
+	      </li>
+	    </ul>
+	  </div>
+	</div>
+
+	<div class="content">
+          ${structure: view.render_messages()}
+          ${structure: wrapped_content}
+	</div>
+      </div>
+    </div>
+  </body>
+</html>
