@@ -1,1 +1,0 @@
-ptah_minicms README
