@@ -8,7 +8,7 @@ CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
 requires = [
     'ptah>=0.2dev',
-    'pyramid>1.3dev',
+    'pyramid>=1.3a1',
     'pyramid_debugtoolbar']
 
 test_requires = [
@@ -17,9 +17,9 @@ test_requires = [
     'pyramid',]
 
 
-setup(name='ptah_simpleauth',
-      version='0.1',
-      description='ptah_simpleauth',
+setup(name='ptah_models',
+      version='0.0',
+      description='ptah_models',
       long_description=README + '\n\n' +  CHANGES,
       classifiers=[
         "Programming Language :: Python",
@@ -39,9 +39,7 @@ setup(name='ptah_simpleauth',
       test_suite = 'nose.collector',
       entry_points = """\
         [paste.app_factory]
-        main = ptah_simpleauth.app:main
-        [ptah]
-        package = ptah_simpleauth
+        main = ptah_models.app:main
       """,
       paster_plugins=['pyramid'],
       )

@@ -19,7 +19,7 @@ class ApplicationRoot(ptah.cms.ApplicationRoot):
     """
     Application model which subclasses ptah.cms.ApplicationRoot
     """
-    
+
     __type__ = ptah.cms.Type(
         'ptah_minicms-app',
         title='Application Root',

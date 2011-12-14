@@ -40,7 +40,7 @@ def login_form(request):
 
         if info.status:
             headers = security.remember(request, info.principal.uri)
-            return HTTPFound(headers = headers, 
+            return HTTPFound(headers = headers,
                              location = request.application_url)
 
         if info.message:

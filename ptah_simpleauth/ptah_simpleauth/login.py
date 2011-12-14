@@ -38,7 +38,7 @@ def login_form(request):
         info = ptah.auth_service.authenticate(data)
         if info.status:
             headers = security.remember(request, info.principal.uri)
-            return HTTPFound(headers = headers, 
+            return HTTPFound(headers = headers,
                              location = request.application_url)
 
         if info.message:

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>ptah_models, made with Ptah!</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- require bootstrap support from view function
+         render_includes generates the HTML for includes
+    -->
+
+    <tal:block content="structure rendered_includes" />
+    <link type="text/css" rel="stylesheet" 
+	  href="${request.static_url('ptah_models:static/app.css')}" />
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" 
+	  href="${request.static_url('ptah_models:static/ico/favicon.ico')}" />
+    <link rel="apple-touch-icon" 
+	  href="${request.static_url('ptah_models:static/ico/apple-touch-icon.png')}" />
+    <link rel="apple-touch-icon" sizes="72x72" 
+	  href="${request.static_url('ptah_models:static/ico/apple-touch-icon-72x72.png')}" />       
+    <link rel="apple-touch-icon" sizes="114x114" 
+	  href="${request.static_url('ptah_models:static/ico/apple-touch-icon-114x114.png')}" />
+  </head>
+
+  <body>
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="container-fluid">
+          <a class="brand" href="/">Project ptah_models</a>
+          <ul class="nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/contact-us.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid app-body">
+      <div class="sidebar">
+        <div class="well">
+          <h5>Links</h5>
+          <ul>
+            <li tal:repeat="link links">
+              <a style="color:${link.color};" href="${link.href}">${link.title}</a>
+              <span class="label success">
+              <a href="/links/${link.__id__}/edit">edit</a>
+              </span>
+            </li>
+          </ul>
+
+          <a href="/links/add.html">Add new link</a>
+        </div>
+      </div>
+
+      <div class="content">
+	${structure: rendered_messages}
+        ${structure: rendered_form}
+      </div>
+
+      <footer>
+      <p>&copy; Enfold Systems 2011</p>
+      </footer>
+    </div>
+
+  </body>
+</html>

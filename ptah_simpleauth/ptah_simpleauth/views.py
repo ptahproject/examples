@@ -31,7 +31,7 @@ class Layout(ptah.View):
 
 class Telephone(form.Regex):
     """ An example validator.  See ptah.form.validators for more info."""
-    
+
     def __init__(self, msg=None):
         log.info('Constructing a Telephone field validator')
         if msg is None:
@@ -40,7 +40,7 @@ class Telephone(form.Regex):
             u'^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$', msg=msg)
 
 
-# This is a "class view", you do not need to use a class for your 
+# This is a "class view", you do not need to use a class for your
 # view. You can use a Function view as provided below.
 
 @view_config(renderer='ptah_simpleauth:templates/homepage.pt',
@@ -55,7 +55,7 @@ class HomepageView(object):
         return {'user': ptah.resolve(authenticated_userid(self.request))}
 
 
-# This is a "function view", you do not need to use a function for your 
+# This is a "function view", you do not need to use a function for your
 # view.  You can use a Class view as provided above.
 
 @view_config(wrapper=ptah.wrap_layout(), route_name='contact-us')
@@ -67,7 +67,7 @@ def contact_us(context, request):
 
         form.TextField(
             'fullname',
-            title = u'First & Last Name'),  
+            title = u'First & Last Name'),
 
         form.TextField(
             'phone',
@@ -108,7 +108,7 @@ def contact_us(context, request):
 
         # You would add any logic/database updates/insert here.
         # You would probably also redirect.
-       
+
         log.info('The form was updated successfully')
         form.message('The form was updated successfully')
 

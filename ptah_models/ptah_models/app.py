@@ -1,16 +1,11 @@
-import transaction
+import ptah
 from pyramid.config import Configurator
 from pyramid.asset import abspath_from_asset_spec
 from pyramid.authentication import AuthTktAuthenticationPolicy
 from pyramid.session import UnencryptedCookieSessionFactoryConfig
 
-import ptah
-
-# Your custom auth plugin
-from ptah_simpleauth.auth import User, Session
-
 # Import models
-from ptah_simpleauth import models
+from ptah_models import models
 
 auth_policy = AuthTktAuthenticationPolicy('secret')
 session_factory = UnencryptedCookieSessionFactoryConfig('secret')
@@ -23,27 +18,29 @@ def main(global_config, **settings):
     config = Configurator(settings=settings,
                           session_factory = session_factory,
                           authentication_policy = auth_policy)
-    config.commit()
-    config.begin()
 
-    # init sqla engine
+    config.add_static_view('ptah_models', 'ptah_models:static')
+
+    # we love them routes
+    config.add_route('root', '/')
+    config.add_route('contact-us', '/contact-us.html')
+    config.add_route('edit-links', '/links/{id}/edit',
+                     factory=models.factory, use_global_views=True)
+    config.add_route('add-link', '/links/add.html')
+
+    config.include('ptah')
+    config.scan()
+    config.commit()
+
+    config.ptah_initialize()
+
     import sqlahelper, sqlalchemy
     engine = sqlalchemy.engine_from_config(settings, 'sqlalchemy.')
     sqlahelper.add_engine(engine)
 
-    # init ptah
-    config.ptah_initialize()
-
     # create sql tables
     Base = sqlahelper.get_base()
     Base.metadata.create_all()
-    transaction.commit()
-
-    # admin user
-    user = Session.query(User).first()
-    if user is None:
-        user = User('Admin', 'admin', 'admin@ptahproject.org', '12345')
-        Session.add(user)
 
     # Bootstrap application data with some links; we use SQLAlchemy
     # directly so there are not application events being fired to apply owner
@@ -56,14 +53,15 @@ def main(global_config, **settings):
              'sqlite':'http://www.sqlite.org/'}
 
     for name, url in links.items():
-        if not Session.query(models.Link)\
+        if not ptah.cms.Session.query(models.Link)\
                .filter(models.Link.href == url).all():
             link = models.Link(title=name,
                                href=url,
                                color='#0000ff')
-            Session.add(link)
+            ptah.cms.Session.add(link)
 
     # Need to commit links to database manually.
+    import transaction
     transaction.commit()
 
     # configure ptah manage
@@ -72,16 +70,4 @@ def main(global_config, **settings):
     ptah_settings['disable_modules'] = [
         'rest', 'introspect', 'apps', 'permissions', 'settings']
 
-    # we love them routes
-    config.add_route('root', '/')
-    config.add_route('contact-us', '/contact-us.html')
-    config.add_route('edit-links', '/links/{id}/edit',
-                     factory=models.factory, use_global_views=True)
-    config.add_route('login', '/login.html')
-    config.add_route('logout', '/logout.html')
-
-    # static assets
-    config.add_static_view('ptah201', 'ptah201:static')
-
-    config.scan()
     return config.make_wsgi_app()

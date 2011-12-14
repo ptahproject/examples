@@ -6,7 +6,7 @@ from pyramid.httpexceptions import HTTPNotFound
 class Link(ptah.cms.Node):
     """ A basic model. """
 
-    __tablename__ = 'ptah_simpleauth_links'
+    __tablename__ = 'ptah_models_links'
 
     # Required primary field
     __id__ = sqla.Column('id', sqla.Integer,

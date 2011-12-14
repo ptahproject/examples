@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>ptah_models, made with Ptah!</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- require bootstrap and bootstrap js support.
+         render_includes actually generates the HTML of the includes
+    -->
+
+    <tal:block content="structure rendered_includes" />
+    <link type="text/css" rel="stylesheet" 
+	  href="${request.static_url('ptah_models:static/app.css')}" />
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" 
+	  href="${request.static_url('ptah_models:static/ico/favicon.ico')}" />
+    <link rel="apple-touch-icon" 
+	  href="${request.static_url('ptah_models:static/ico/apple-touch-icon.png')}" />
+    <link rel="apple-touch-icon" sizes="72x72" 
+	  href="${request.static_url('ptah_models:static/ico/apple-touch-icon-72x72.png')}" />       
+    <link rel="apple-touch-icon" sizes="114x114" 
+	  href="${request.static_url('ptah_models:static/ico/apple-touch-icon-114x114.png')}" />
+  </head>
+
+  <body>
+
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="container-fluid">
+          <a class="brand" href="#">Project ptah_models</a>
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="/contact-us.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid app-body" style="margin-top: 60px">
+      <div class="sidebar">
+        <div class="well">
+          <h5>Links</h5>
+          <ul>
+            <li tal:repeat="link view.get_links()">
+              <a style="color:${link.color};" href="${link.href}">${link.title}</a>
+              <span class="label success">
+              <a href="/links/${link.__id__}/edit">edit</a>
+              </span>
+            </li>
+          </ul>
+          
+	  <a href="/links/add.html">Add new link</a>
+        </div>
+      </div>
+      <div class="content">
+	${structure: rendered_messages}
+
+        <!-- Main hero unit for a primary marketing message or call to action -->
+        <div class="hero-unit">
+          <h1>Welcome to ptah_models!</h1>
+          <p>The ptah_models application uses Ptah, a modern web publishing framework.
+          Ptah enables you to build web applications and web sites - very fast.  The
+          best part is Ptah works like you expect.  It uses well-documented technologies.
+          You can pick what features you want and leave behind the opinions which you disagree.
+          </p>
+          <p>The default login is <strong>admin</strong> and the
+             password is <strong>12345</strong>
+          </p>
+          <p>
+            <a class="btn primary large" href="/ptah-manage/">Goto Ptah Manage UI &raquo;</a>
+          </p>
+        </div>
+
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="span6">
+            <h2>Models</h2>
+            <p>This sample application comes with an example model, Link.
+               You can add, edit and delete them in the Manage UI.  You
+               can look on the filesystem in models.py to see the Link model.
+            </p>
+            <p><a class="btn" href="/ptah-manage/models/">View models &raquo;</a></p>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+          <div class="span6">
+            <h2>SQL</h2>
+            <p>Ptah uses SQLAlchemy for its ORM and SQL library.
+               While the default is sqlite, Ptah will run on all
+               modern databases including Mysql, Oracle, Postgresql, and
+               Microsoft SQLServer.  There is an O'Reilly book on SQLAlchemy.
+               No homebrewed SQL usage here.  Everything you learn you can be
+               applied outside of Ptah.
+            </p>
+
+            <p><a class="btn" href="/ptah-manage/sqla/">View tables &raquo;</a></p>
+          </div>
+          <div class="span5">
+            <h2>Fields</h2>
+             <p>No modern web environment would make you build your own Field's
+                from scratch.  We provide a set of Fields out-of-the-box and it
+                is very easy to build new ones.  Soon we will provide ability to
+                download additional Fields so you can share and re-use other
+                people's work.
+             </p>
+            <p><a class="btn" href="/ptah-manage/fields/">View fields &raquo;</a></p>
+         </div>
+
+          <div class="span5">
+            <h2>Much more</h2>
+            <p>We have disabled quite a few Manage UI modules for the initial
+               user experience.  We do not want to further side track you from
+               your evaluation time you have with Ptah.  Once you feel Ptah is
+               right for you.  Feel free to re-enable those modules in your
+               .ini file.
+            </p>
+            <!--
+            <p><a class="btn" href="#">View details &raquo;</a></p>
+            -->
+          </div>
+
+        </div>
+
+        <footer>
+          <p>&copy; Enfold Systems 2011</p>
+        </footer>
+      </div>
+    </div>
+
+  </body>
+</html>
