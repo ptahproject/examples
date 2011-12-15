@@ -65,9 +65,8 @@ def main(global_config, **settings):
     transaction.commit()
 
     # configure ptah manage
-    ptah_settings = config.ptah_get_settings(ptah.CFG_ID_PTAH)
-    ptah_settings['managers'] = ['*']
-    ptah_settings['disable_modules'] = [
-        'rest', 'introspect', 'apps', 'permissions', 'settings']
+    config.ptah_manage(
+        managers = ['*'],
+        disable_modules = ['rest', 'introspect', 'apps', 'permissions', 'settings'])
 
     return config.make_wsgi_app()

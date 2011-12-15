@@ -67,10 +67,9 @@ def main(global_config, **settings):
     transaction.commit()
 
     # configure ptah manage
-    ptah_settings = config.ptah_get_settings(ptah.CFG_ID_PTAH)
-    ptah_settings['managers'] = ['*']
-    ptah_settings['disable_modules'] = [
-        'rest', 'introspect', 'apps', 'permissions', 'settings']
+    config.ptah_manage(
+        managers = ['*'],
+        disable_modules = ['rest', 'introspect', 'apps', 'permissions', 'settings'])
 
     # we love them routes
     config.add_route('root', '/')
@@ -81,7 +80,7 @@ def main(global_config, **settings):
     config.add_route('logout', '/logout.html')
 
     # static assets
-    config.add_static_view('ptah201', 'ptah201:static')
+    config.add_static_view('ptah_simpleauth', 'ptah_simpleauth:static')
 
     config.scan()
     return config.make_wsgi_app()

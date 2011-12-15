@@ -5,7 +5,7 @@ from ptah_minicms.app import ApplicationRoot
 from ptah_minicms.actions import CATEGORY
 
 
-ptah.register_layout(
+ptah.layout.register(
     'ptah-page', ApplicationRoot, parent='workspace',
     renderer='ptah_minicms:templates/layout-ptahpage.pt')
 

@@ -53,6 +53,9 @@ def main(global_config, **settings):
     # enable rest api
     config.ptah_rest_api()
 
+    # enable ptah manage
+    config.ptah_manage()
+
     # create sql tables
     Base = sqlahelper.get_base()
     Base.metadata.create_all()
