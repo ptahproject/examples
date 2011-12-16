@@ -32,14 +32,12 @@ def main(global_config, **settings):
     config.scan()
     config.commit()
 
-    config.ptah_initialize()
+    config.ptah_initialize(False)
 
-    import sqlahelper, sqlalchemy
-    engine = sqlalchemy.engine_from_config(settings, 'sqlalchemy.')
-    sqlahelper.add_engine(engine)
+    config.ptah_initialize_sql()
 
     # create sql tables
-    Base = sqlahelper.get_base()
+    Base = ptah.get_base()
     Base.metadata.create_all()
 
     # Bootstrap application data with some links; we use SQLAlchemy
@@ -53,12 +51,12 @@ def main(global_config, **settings):
              'sqlite':'http://www.sqlite.org/'}
 
     for name, url in links.items():
-        if not ptah.cms.Session.query(models.Link)\
+        if not ptah.get_session().query(models.Link)\
                .filter(models.Link.href == url).all():
             link = models.Link(title=name,
                                href=url,
                                color='#0000ff')
-            ptah.cms.Session.add(link)
+            ptah.get_session().add(link)
 
     # Need to commit links to database manually.
     import transaction

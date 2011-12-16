@@ -35,7 +35,7 @@ class HomepageView(object):
         ptah.include(request, 'bootstrap-js')
 
     def get_links(self):
-        return ptah.Session.query(models.Link)
+        return ptah.get_session().query(models.Link)
 
     def __call__(self):
         return {'rendered_includes': ptah.render_includes(self.request),
@@ -113,7 +113,7 @@ def contact_us(context, request):
     rendered_form = contactform.render()
 
     # query for links to populate links box
-    links = ptah.Session.query(models.Link)
+    links = ptah.get_session().query(models.Link)
 
     #include library dependencies
     ptah.include(request, 'bootstrap')
@@ -166,7 +166,7 @@ def edit_link(context, request):
     ptah.include(request, 'bootstrap')
     rendered_includes = ptah.render_includes(request)
 
-    return {'links': cms.Session.query(models.Link),
+    return {'links': ptah.get_session().query(models.Link),
             'rendered_form': rendered_form,
             'rendered_includes': rendered_includes,
             'rendered_messages': ptah.render_messages(request)}
@@ -190,7 +190,7 @@ def add_link(context, request):
         link = models.Link(title = data['title'],
                            href = data['href'],
                            color = data['color'])
-        ptah.Session.add(link)
+        ptah.get_session().add(link)
 
         form.message('Link has been created.')
         return HTTPFound(location='/')
@@ -208,7 +208,7 @@ def add_link(context, request):
     ptah.include(request, 'bootstrap')
     rendered_includes = ptah.render_includes(request)
 
-    return {'links': cms.Session.query(models.Link),
+    return {'links': ptah.get_session().query(models.Link),
             'rendered_form': rendered_form,
             'rendered_includes': rendered_includes,
             'rendered_messages': ptah.render_messages(request)}

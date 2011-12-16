@@ -9,7 +9,7 @@ import ptah
 from ptah_minicms.permissions import Manager
 
 # users
-from ptah_minicms.auth import User, Session
+from ptah_minicms.auth import User
 
 # We will add Page during bootstrap of empty AppRoot
 from ptah_minicms.page import Page
@@ -57,13 +57,14 @@ def main(global_config, **settings):
     config.ptah_manage()
 
     # create sql tables
-    Base = sqlahelper.get_base()
+    Base = ptah.get_base()
     Base.metadata.create_all()
 
     # your application configuration
     root = APP_FACTORY()
 
     # admin user
+    Session = ptah.get_session()
     user = Session.query(User).first()
     if user is None:
         user = User('Admin', 'admin', 'admin@ptahproject.org', '12345')

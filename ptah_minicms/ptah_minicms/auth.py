@@ -1,9 +1,5 @@
 import ptah
-import sqlahelper
 import sqlalchemy as sqla
-
-Base = sqlahelper.get_base()
-Session = sqlahelper.get_session()
 
 
 @ptah.auth_provider('ptah-minicms-user')
@@ -23,7 +19,7 @@ class AuthProvider(object):
         return User.get_bylogin(login)
 
 
-class User(Base):
+class User(ptah.get_base()):
 
     __tablename__ = 'ptah_minicms_users'
 
@@ -46,18 +42,18 @@ class User(Base):
 
     @classmethod
     def get_byuri(cls, uri):
-        return Session.query(User).filter(User.uri==uri).first()
+        return ptah.get_session().query(User).filter(User.uri==uri).first()
 
     @classmethod
     def get_bylogin(cls, login):
-        return Session.query(User).filter(User.login==login).first()
+        return ptah.get_session().query(User).filter(User.login==login).first()
 
 
 @ptah.principal_searcher('ptah-minicms-user')
 def search(term):
     term = '%%%s%%'%term
 
-    q = Session.query(User) \
+    q = ptah._get_session().query(User) \
         .filter(sqla.sql.or_(User.email.contains(term),
                              User.name.contains(term)))\
                              .order_by(sqla.sql.asc('name'))
