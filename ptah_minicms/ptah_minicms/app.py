@@ -43,24 +43,26 @@ def main(global_config, **settings):
     config.add_static_view('ptah_minicms', 'ptah_minicms:static')
 
     config.scan()
-    config.commit()
-    config.begin()
-
-    # init ptah settings
-    config.ptah_initialize_settings()
 
     # init sqlalchemy engine
-    config.ptah_initialize_sql()
+    config.ptah_init_sql()
+
+    # init ptah settings
+    config.ptah_init_settings()
 
     # enable rest api
-    config.ptah_rest_api()
+    config.ptah_init_rest()
 
     # enable ptah manage
-    config.ptah_manage()
+    config.ptah_init_manage()
 
     # create sql tables
     Base = ptah.get_base()
     Base.metadata.create_all()
+
+    # populate database
+    config.commit()
+    config.begin()
 
     # your application configuration
     ptah.auth_service.set_userid(ptah.SUPERUSER_URI)

@@ -23,19 +23,39 @@ def main(global_config, **settings):
     config = Configurator(settings=settings,
                           session_factory = session_factory,
                           authentication_policy = auth_policy)
-    config.commit()
-    config.begin()
 
     # init ptah settings
-    config.ptah_initialize_settings()
+    config.ptah_init_settings()
 
     # init sqlalchemy engine
-    config.ptah_initialize_sql()
+    config.ptah_init_sql()
+
+    # configure ptah manage
+    config.ptah_init_manage(
+        managers = ['*'],
+        disable_modules = ['rest', 'introspect', 'apps', 'permissions'])
+
+    # we love them routes
+    config.add_route('root', '/')
+    config.add_route('contact-us', '/contact-us.html')
+    config.add_route('edit-links', '/links/{id}/edit',
+                     factory=models.factory, use_global_views=True)
+    config.add_route('login', '/login.html')
+    config.add_route('logout', '/logout.html')
+
+    # static assets
+    config.add_static_view('ptah_simpleauth', 'ptah_simpleauth:static')
+
+    config.scan()
 
     # create sql tables
     Base = ptah.get_base()
     Base.metadata.create_all()
     transaction.commit()
+
+    # populate database
+    config.commit()
+    config.begin()
 
     Session = ptah.get_session()
 
@@ -66,21 +86,4 @@ def main(global_config, **settings):
     # Need to commit links to database manually.
     transaction.commit()
 
-    # configure ptah manage
-    config.ptah_manage(
-        managers = ['*'],
-        disable_modules = ['rest', 'introspect', 'apps', 'permissions', 'settings'])
-
-    # we love them routes
-    config.add_route('root', '/')
-    config.add_route('contact-us', '/contact-us.html')
-    config.add_route('edit-links', '/links/{id}/edit',
-                     factory=models.factory, use_global_views=True)
-    config.add_route('login', '/login.html')
-    config.add_route('logout', '/logout.html')
-
-    # static assets
-    config.add_static_view('ptah_simpleauth', 'ptah_simpleauth:static')
-
-    config.scan()
     return config.make_wsgi_app()

@@ -30,11 +30,19 @@ def main(global_config, **settings):
 
     config.include('ptah')
     config.scan()
+
+    # init ptah settings
+    config.ptah_init_settings()
+
+    # init sqlalchemy
+    config.ptah_init_sql()
+
+    # init ptah manage
+    config.ptah_init_manage(
+        managers = ['*'],
+        disable_modules = ['rest', 'introspect', 'apps', 'permissions', 'settings'])
+
     config.commit()
-
-    config.ptah_initialize_settings()
-
-    config.ptah_initialize_sql()
 
     # create sql tables
     Base = ptah.get_base()
@@ -61,10 +69,5 @@ def main(global_config, **settings):
     # Need to commit links to database manually.
     import transaction
     transaction.commit()
-
-    # configure ptah manage
-    config.ptah_manage(
-        managers = ['*'],
-        disable_modules = ['rest', 'introspect', 'apps', 'permissions', 'settings'])
 
     return config.make_wsgi_app()
