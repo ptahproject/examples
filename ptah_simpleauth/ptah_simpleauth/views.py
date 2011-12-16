@@ -26,7 +26,7 @@ class Layout(ptah.View):
         self.manage_url = ptah.manage.get_manage_url(self.request)
 
         # query for links to populate links box
-        self.links = ptah.Session.query(models.Link)
+        self.links = ptah.get_session().query(models.Link)
 
 
 class Telephone(form.Regex):

@@ -32,7 +32,7 @@ def main(global_config, **settings):
     config.scan()
     config.commit()
 
-    config.ptah_initialize(False)
+    config.ptah_initialize_settings()
 
     config.ptah_initialize_sql()
 

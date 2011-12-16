@@ -9,7 +9,7 @@ CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 requires = [
     'ptah >= 0.2dev',
     'pyramid >= 1.3dev',
-    'pyramid_beaker',
+    'pyramid_beaker >= 0.6.1',
     'pyramid_debugtoolbar']
 
 test_requires = [

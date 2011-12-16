@@ -7,7 +7,7 @@ from pyramid.session import UnencryptedCookieSessionFactoryConfig
 import ptah
 
 # Your custom auth plugin
-from ptah_simpleauth.auth import User, Session
+from ptah_simpleauth.auth import User
 
 # Import models
 from ptah_simpleauth import models
@@ -26,18 +26,18 @@ def main(global_config, **settings):
     config.commit()
     config.begin()
 
-    # init sqla engine
-    import sqlahelper, sqlalchemy
-    engine = sqlalchemy.engine_from_config(settings, 'sqlalchemy.')
-    sqlahelper.add_engine(engine)
+    # init ptah settings
+    config.ptah_initialize_settings()
 
-    # init ptah
-    config.ptah_initialize()
+    # init sqlalchemy engine
+    config.ptah_initialize_sql()
 
     # create sql tables
-    Base = sqlahelper.get_base()
+    Base = ptah.get_base()
     Base.metadata.create_all()
     transaction.commit()
+
+    Session = ptah.get_session()
 
     # admin user
     user = Session.query(User).first()

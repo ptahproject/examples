@@ -1,5 +1,4 @@
 import transaction
-import sqlahelper
 from pyramid.config import Configurator
 from pyramid.asset import abspath_from_asset_spec
 
@@ -47,8 +46,11 @@ def main(global_config, **settings):
     config.commit()
     config.begin()
 
-    # init ptah
-    config.ptah_initialize()
+    # init ptah settings
+    config.ptah_initialize_settings()
+
+    # init sqlalchemy engine
+    config.ptah_initialize_sql()
 
     # enable rest api
     config.ptah_rest_api()
@@ -61,6 +63,7 @@ def main(global_config, **settings):
     Base.metadata.create_all()
 
     # your application configuration
+    ptah.auth_service.set_userid(ptah.SUPERUSER_URI)
     root = APP_FACTORY()
 
     # admin user
