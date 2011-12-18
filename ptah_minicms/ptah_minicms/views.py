@@ -119,9 +119,7 @@ class Adding(ptah.View):
             if tinfo is None:
                 return HTTPNotFound
 
-            form = AddContentForm(tinfo, self, self.request)
-            form.update()
-            return form.render()
+            return AddContentForm(tinfo, self, self.request)()
 
         return super(Adding, self).__call__()
 

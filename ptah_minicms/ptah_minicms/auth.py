@@ -53,7 +53,7 @@ class User(ptah.get_base()):
 def search(term):
     term = '%%%s%%'%term
 
-    q = ptah._get_session().query(User) \
+    q = ptah.get_session().query(User) \
         .filter(sqla.sql.or_(User.email.contains(term),
                              User.name.contains(term)))\
                              .order_by(sqla.sql.asc('name'))
