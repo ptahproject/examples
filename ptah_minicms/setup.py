@@ -9,6 +9,7 @@ CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 requires = [
     'ptah >= 0.2dev',
     'pyramid >= 1.3dev',
+    'pyramid_exclog',
     'pyramid_beaker',
     'pyramid_debugtoolbar']
 
@@ -19,7 +20,7 @@ test_requires = [
 
 
 setup(name='ptah_minicms',
-      version='0.0',
+      version='0.1',
       description='ptah_minicms',
       long_description=README + '\n\n' +  CHANGES,
       classifiers=[

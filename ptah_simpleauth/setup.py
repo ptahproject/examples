@@ -9,6 +9,7 @@ CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 requires = [
     'ptah>=0.2dev',
     'pyramid>1.3dev',
+    'pyramid_exclog',
     'pyramid_debugtoolbar']
 
 test_requires = [
