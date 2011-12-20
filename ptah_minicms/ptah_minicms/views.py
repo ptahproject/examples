@@ -4,14 +4,14 @@ from pyramid.httpexceptions import HTTPFound, HTTPNotFound
 
 import ptah
 from ptah_minicms import settings
-from ptah_minicms.app import ApplicationRoot
+from ptah_minicms.app import SiteRoot
 
 
 # access this view by going to http://localhost:8080/myview.html
 # add ptah_minicms.band=my band to .ini file, restart and render this view.
 
 @view_config('myview.html',
-             context=ApplicationRoot, wrapper=ptah.layout())
+             context=SiteRoot, wrapper=ptah.layout())
 def my_view(request):
     data = {'context' : request.root,
             'happy' : settings.ptah_minicms.happy,

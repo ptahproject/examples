@@ -14,19 +14,19 @@ from ptah_minicms.auth import User
 from ptah_minicms.page import Page
 
 
-class ApplicationRoot(ptah.cms.ApplicationRoot):
+class SiteRoot(ptah.cms.ApplicationRoot):
     """
     Application model which subclasses ptah.cms.ApplicationRoot
     """
 
     __type__ = ptah.cms.Type(
         'ptah_minicms-app',
-        title='Application Root',
+        title='CMS Site Root',
         description='A root for the ptah_minicms Application')
 
 
 APP_FACTORY = ptah.cms.ApplicationFactory(
-    ApplicationRoot, '/',
+    SiteRoot, '/',
     name='root', title='Ptah mini cms')
 
 

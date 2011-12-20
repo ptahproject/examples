@@ -1,17 +1,17 @@
 import ptah
 from ptah import view, cms, manage, auth_service
 
-from ptah_minicms.app import ApplicationRoot
+from ptah_minicms.app import SiteRoot
 from ptah_minicms.actions import CATEGORY
 
 
 ptah.layout.register(
-    'ptah-page', ApplicationRoot, parent='workspace',
+    'ptah-page', SiteRoot, parent='workspace',
     renderer='ptah_minicms:templates/layout-ptahpage.pt')
 
 
 @ptah.layout(
-    'page', ApplicationRoot,
+    'page', SiteRoot,
     renderer='ptah_minicms:templates/layout-page.pt')
 
 class PageLayout(ptah.View):
@@ -22,7 +22,7 @@ class PageLayout(ptah.View):
 
 
 @ptah.layout(
-    'workspace', ApplicationRoot, parent='page',
+    'workspace', SiteRoot, parent='page',
     renderer='ptah_minicms:templates/layout-workspace.pt')
 
 class WorkspaceLayout(ptah.View):
