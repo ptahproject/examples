@@ -25,7 +25,7 @@ class Link(ptah.cms.Node):
 def factory(request):
     id_ = request.matchdict.get('id')
     if id_:
-        return ptah.cms.Session.query(Link) \
+        return ptah.get_session().query(Link) \
                .filter(Link.__id__ == id_).first()
 
     return HTTPNotFound(location='.')

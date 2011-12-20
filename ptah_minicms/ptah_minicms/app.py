@@ -1,5 +1,4 @@
 import transaction
-import sqlahelper
 from pyramid.config import Configurator
 from pyramid.asset import abspath_from_asset_spec
 
@@ -9,7 +8,7 @@ import ptah
 from ptah_minicms.permissions import Manager
 
 # users
-from ptah_minicms.auth import User, Session
+from ptah_minicms.auth import User
 
 # We will add Page during bootstrap of empty AppRoot
 from ptah_minicms.page import Page
@@ -44,26 +43,33 @@ def main(global_config, **settings):
     config.add_static_view('ptah_minicms', 'ptah_minicms:static')
 
     config.scan()
+
+    # init sqlalchemy engine
+    config.ptah_init_sql()
+
+    # init ptah settings
+    config.ptah_init_settings()
+
+    # enable rest api
+    config.ptah_init_rest()
+
+    # enable ptah manage
+    config.ptah_init_manage()
+
+    # create sql tables
+    Base = ptah.get_base()
+    Base.metadata.create_all()
+
+    # populate database
     config.commit()
     config.begin()
 
-    # init ptah
-    config.ptah_initialize()
-
-    # enable rest api
-    config.ptah_rest_api()
-
-    # enable ptah manage
-    config.ptah_manage()
-
-    # create sql tables
-    Base = sqlahelper.get_base()
-    Base.metadata.create_all()
-
     # your application configuration
+    ptah.auth_service.set_userid(ptah.SUPERUSER_URI)
     root = APP_FACTORY()
 
     # admin user
+    Session = ptah.get_session()
     user = Session.query(User).first()
     if user is None:
         user = User('Admin', 'admin', 'admin@ptahproject.org', '12345')

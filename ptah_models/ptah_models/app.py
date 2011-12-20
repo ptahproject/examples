@@ -30,16 +30,22 @@ def main(global_config, **settings):
 
     config.include('ptah')
     config.scan()
+
+    # init ptah settings
+    config.ptah_init_settings()
+
+    # init sqlalchemy
+    config.ptah_init_sql()
+
+    # init ptah manage
+    config.ptah_init_manage(
+        managers = ['*'],
+        disable_modules = ['rest', 'introspect', 'apps', 'permissions', 'settings'])
+
     config.commit()
 
-    config.ptah_initialize()
-
-    import sqlahelper, sqlalchemy
-    engine = sqlalchemy.engine_from_config(settings, 'sqlalchemy.')
-    sqlahelper.add_engine(engine)
-
     # create sql tables
-    Base = sqlahelper.get_base()
+    Base = ptah.get_base()
     Base.metadata.create_all()
 
     # Bootstrap application data with some links; we use SQLAlchemy
@@ -53,20 +59,15 @@ def main(global_config, **settings):
              'sqlite':'http://www.sqlite.org/'}
 
     for name, url in links.items():
-        if not ptah.cms.Session.query(models.Link)\
+        if not ptah.get_session().query(models.Link)\
                .filter(models.Link.href == url).all():
             link = models.Link(title=name,
                                href=url,
                                color='#0000ff')
-            ptah.cms.Session.add(link)
+            ptah.get_session().add(link)
 
     # Need to commit links to database manually.
     import transaction
     transaction.commit()
-
-    # configure ptah manage
-    config.ptah_manage(
-        managers = ['*'],
-        disable_modules = ['rest', 'introspect', 'apps', 'permissions', 'settings'])
 
     return config.make_wsgi_app()
