@@ -39,8 +39,6 @@ ptah.uiaction(
        'sort_weight': 10.0,
        'category': CATEGORY})
 
-"""
-XXX: removed until ptah 0.3
 ptah.uiaction(
     ptah.cms.Content,
     **{'id': 'layout-preview',
@@ -50,4 +48,4 @@ ptah.uiaction(
        'permission': ptah.cms.View,
        'sort_weight': 20.0,
        'category': CATEGORY})
-"""
+
