@@ -76,11 +76,11 @@ def main(global_config, **settings):
         Session.add(user)
 
     # give manager role to admin
-    if user.uri not in root.__local_roles__:
-        root.__local_roles__[user.uri] = [Manager.id]
+    if user.__uri__ not in root.__local_roles__:
+        root.__local_roles__[user.__uri__] = [Manager.id]
 
     # set authcontext as admin user
-    ptah.auth_service.set_userid(user.uri)
+    ptah.auth_service.set_userid(user.__uri__)
 
     # create default page
     if 'front-page' not in root.keys():

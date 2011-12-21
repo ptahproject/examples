@@ -24,7 +24,7 @@ class User(ptah.get_base()):
     __tablename__ = 'ptah_minicms_users'
 
     pid = sqla.Column(sqla.Integer, primary_key=True)
-    uri = sqla.Column(sqla.Unicode(45), unique=True, info={'uri': True})
+    __uri__ = sqla.Column('uri', sqla.Unicode(45), unique=True, info={'uri': True})
     name = sqla.Column(sqla.Unicode(255))
     login = sqla.Column(sqla.Unicode(255), unique=True)
     email = sqla.Column(sqla.Unicode(255), unique=True)
@@ -38,11 +38,11 @@ class User(ptah.get_base()):
         self.login = login
         self.email = email
         self.password = ptah.pwd_tool.encode(password)
-        self.uri = self._uri_gen()
+        self.__uri__ = self._uri_gen()
 
     @classmethod
     def get_byuri(cls, uri):
-        return ptah.get_session().query(User).filter(User.uri==uri).first()
+        return ptah.get_session().query(User).filter(User.__uri__==uri).first()
 
     @classmethod
     def get_bylogin(cls, login):

@@ -48,4 +48,3 @@ ptah.uiaction(
        'permission': ptah.cms.View,
        'sort_weight': 20.0,
        'category': CATEGORY})
-
