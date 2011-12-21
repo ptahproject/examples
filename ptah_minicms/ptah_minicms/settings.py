@@ -15,7 +15,6 @@ ptah.register_settings(
         title = 'Are you happy?',
         description = 'Does Ptah bring you happiness?'),
 
-    ttw = True,
     title = 'ptah_minicms settings',
     description = 'Configuration settings for ptah_minicms.'
     )
