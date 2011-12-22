@@ -3,11 +3,11 @@ ptah examples
 
 This git repository contains self-contained WSGI applications which demonstrate various aspects of the pyramid-based Ptah environment. This repository contains::
 
-- ptah_models: 2 form examples, homepage, management ui
+- ptah_models - 2 form examples, homepage, management ui
 
-- ptah_simpleauth: 2 form examples, homepage, management ui, auth and user source 
+- ptah_simpleauth - 2 form examples, homepage, management ui, auth and user source 
 
-- ptah_minicms: a hierarchical cms supporting local roles, management ui, auth/user source, actions, layout preview and File, Page and Folder content types. 
+- ptah_minicms - a hierarchical cms supporting local roles, management ui, auth/user source, actions, layout preview and File, Page and Folder content types. 
 
 All of these examples can be used in conjunction with ``ptah_crowd`` which provides more features.  Some ``ptah_crowd`` features include user management, registration, reset password.  You can find ``ptah_crowd`` in the ptahproject github.
 
