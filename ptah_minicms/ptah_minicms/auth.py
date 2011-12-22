@@ -24,14 +24,15 @@ class User(ptah.get_base()):
     __tablename__ = 'ptah_minicms_users'
 
     pid = sqla.Column(sqla.Integer, primary_key=True)
-    __uri__ = sqla.Column('uri', sqla.Unicode(45), unique=True, info={'uri': True})
+    __uri__ = sqla.Column('uri', sqla.Unicode(45),
+                          unique=True, info={'uri': True})
     name = sqla.Column(sqla.Unicode(255))
     login = sqla.Column(sqla.Unicode(255), unique=True)
     email = sqla.Column(sqla.Unicode(255), unique=True)
     password = sqla.Column(sqla.Unicode(255))
     _uri_gen = ptah.UriFactory('ptah-minicms-user')
 
-    def __init__(self, name, login, email, password=u''):
+    def __init__(self, name, login, email, password=''):
         super(User, self).__init__()
 
         self.name = name

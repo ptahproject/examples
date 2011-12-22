@@ -1,4 +1,5 @@
 import transaction
+from pyramid.compat import text_
 from pyramid.config import Configurator
 from pyramid.asset import abspath_from_asset_spec
 
@@ -84,7 +85,7 @@ def main(global_config, **settings):
 
     # create default page
     if 'front-page' not in root.keys():
-        page = Page(title=u'Welcome to Ptah')
+        page = Page(title='Welcome to Ptah')
         page.text = open(
             abspath_from_asset_spec('ptah_minicms:welcome.pt'), 'rb').read()
 

@@ -17,16 +17,16 @@ def login_form(request):
     login_form.fields = form.Fieldset(
         form.TextField(
             'login',
-            title = u'Login Name',
+            title = 'Login Name',
             description = 'Login names are case sensitive, '\
                 'make sure the caps lock key is not enabled.',
-            default = u''),
+            default = ''),
         form.PasswordField(
             'password',
-            title = u'Password',
+            title = 'Password',
             description = 'Case sensitive, make sure caps '\
                 'lock is not enabled.',
-            default = u''),
+            default = ''),
         )
 
     def loginAction(form):

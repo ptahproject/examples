@@ -94,6 +94,6 @@ class FileAddForm(cms.AddForm):
         n = name
         while n in self.container:
             i += 1
-            n = u'%s-%s'%(name, i)
+            n = '%s-%s'%(name, i)
 
         return n
