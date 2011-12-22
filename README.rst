@@ -1,7 +1,7 @@
 ptah examples
 ==============
 
-This git repository contains self-contained WSGI applications which demonstrate various aspects of the pyramid-based Ptah environment. This repository contains::
+This git repository contains self-contained WSGI applications which demonstrate various aspects of the pyramid-based Ptah environment. This repository contains:
 
 * ptah_models - 2 form examples, homepage, management ui
 
