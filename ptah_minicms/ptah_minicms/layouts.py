@@ -1,7 +1,7 @@
 import ptah
 from ptah import view, cms, manage, auth_service
 
-from ptah_minicms.app import SiteRoot
+from ptah_minicms.root import SiteRoot
 from ptah_minicms.actions import CATEGORY
 
 

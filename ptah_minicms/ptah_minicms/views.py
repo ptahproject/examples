@@ -4,7 +4,7 @@ from pyramid.httpexceptions import HTTPFound, HTTPNotFound
 
 import ptah
 from ptah_minicms import settings
-from ptah_minicms.app import SiteRoot
+from ptah_minicms.root import SiteRoot
 
 
 # access this view by going to http://localhost:8080/myview.html

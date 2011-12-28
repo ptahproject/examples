@@ -25,8 +25,10 @@ class Page(ptah.cms.Content):
                        info = {'field_type': 'tinymce'})
 
 
-view_config(
+@view_config(
     context=Page,
     permission=ptah.cms.View,
     wrapper=ptah.wrap_layout(),
-    renderer='ptah_minicms:templates/page.pt')(ptah.View)
+    renderer='ptah_minicms:templates/page.pt')
+class PageView(ptah.View):
+    pass

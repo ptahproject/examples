@@ -4,41 +4,22 @@ from pyramid.config import Configurator
 from pyramid.asset import abspath_from_asset_spec
 
 import ptah
+import ptah_crowd
 
 # Your custom application permissions
 from ptah_minicms.permissions import Manager
 
-# users
-from ptah_minicms.auth import User
-
 # We will add Page during bootstrap of empty AppRoot
 from ptah_minicms.page import Page
 
-
-class SiteRoot(ptah.cms.ApplicationRoot):
-    """
-    Application model which subclasses ptah.cms.ApplicationRoot
-    """
-
-    __type__ = ptah.cms.Type(
-        'ptah_minicms-app',
-        title='CMS Site Root',
-        description='A root for the ptah_minicms Application')
-
-
-APP_FACTORY = ptah.cms.ApplicationFactory(
-    SiteRoot, '/',
-    name='root', title='Ptah mini cms')
+# application root
+from ptah_minicms.root import APP_FACTORY
 
 
 def main(global_config, **settings):
     """ This is your application startup.
     """
     config = Configurator(root_factory=APP_FACTORY, settings=settings)
-
-    # app routes
-    config.add_route('cms_login', '/login.html', use_global_views=True)
-    config.add_route('cms_logout', '/logout.html', use_global_views=True)
 
     # static assets
     config.add_static_view('ptah_minicms', 'ptah_minicms:static')
@@ -71,10 +52,15 @@ def main(global_config, **settings):
 
     # admin user
     Session = ptah.get_session()
-    user = Session.query(User).first()
+    user = Session.query(ptah_crowd.CrowdUser).first()
     if user is None:
-        user = User('Admin', 'admin', 'admin@ptahproject.org', '12345')
-        Session.add(user)
+        user = ptah_crowd.CrowdUser(
+            title='Admin',
+            login='admin',
+            email='admin@ptahproject.org')
+        user.password = ptah.pwd_tool.encode('12345')
+        user.properties.validated = True
+        ptah_crowd.CrowdFactory().add(user)
 
     # give manager role to admin
     if user.__uri__ not in root.__local_roles__:

@@ -31,6 +31,15 @@ ptah.uiaction(
        'category': CATEGORY})
 
 ptah.uiaction(
+    ptah.cms.Container,
+    **{'id': 'listing',
+       'title': 'Folder listing',
+       'action': 'listing.html',
+       'permission': ptah.cms.View,
+       'sort_weight': 6.0,
+       'category': CATEGORY})
+
+ptah.uiaction(
     ptah.ILocalRolesAware,
     **{'id': 'sharing',
        'title': 'Sharing',
