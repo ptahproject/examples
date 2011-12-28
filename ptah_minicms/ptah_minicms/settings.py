@@ -1,7 +1,7 @@
 import ptah
 
 ptah.register_settings(
-    'ptah_minicms',
+    'ptah-minicms',
 
     ptah.form.TextField(
         'band',
