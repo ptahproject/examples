@@ -107,11 +107,17 @@ form_declarative.py
 Example of using :py:mod:`ptah.form` declartively. The form example subclasses
 :py:class:`ptah.form.Form` and has a validator.
 
+  .. literalinclude:: ../simple/form_declarative.py
+     :linenos:
+
 form_imperative.py
 ~~~~~~~~~~~~~~~~~~
 
 Example of using :py:mod:`ptah.form` imperatively.  The form is instantiated and
 fields are added manually.  
+
+  .. literalinclude:: ../simple/form_imperative.py
+     :linenos:
 
 layout.py
 ~~~~~~~~~
@@ -120,4 +126,5 @@ Ptah provides a :py:mod:`pyramid.renderers` independent mechanism to provide
 template composition (e.g. template inheritance).  The :py:mod:`ptah_minicms`
 provides an example of layout preview which draws borders around the layouts.
 
-
+  .. literalinclude:: ../simple/layout.py
+     :linenos:
