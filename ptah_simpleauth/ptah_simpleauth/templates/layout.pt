@@ -15,7 +15,6 @@
           <a class="brand" href="/">Project ptah_simpleauth</a>
           <ul class="nav">
             <li class="active"><a href="/">Home</a></li>
-            <li><a href="/contact-us.html">Contact</a></li>
           </ul>
           <p class="pull-right" tal:condition="view.user is not None">
 	    Logged in as 
@@ -34,12 +33,8 @@
 	  <div class="well">
 	    <h5>Links</h5>
 	    <ul>
-	      <li tal:repeat="link view.links">
-		<a style="color:${link.color};" 
-		   href="${link.href}">${link.title}</a>
-		<span class="label success">
-		  <a href="/links/${link.__id__}/edit">edit</a>
-		</span>
+	      <li tal:repeat="(name, href) python: view.links.items()">
+            <a href="${href}">${name}</a>
 	      </li>
 	    </ul>
 	  </div>
