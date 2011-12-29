@@ -101,6 +101,14 @@ a Python package but a collection of example modules.  Each module is
 an example of a specific aspect of Ptah.  The goal is to show, in isolation,
 a particular feature/function of Ptah. 
 
+These examples do not use ``pserve`` to run these examples.  Just use the
+python environment you have installed ptah.
+
+Example of running on of the simple examples::
+
+  $ cd examples/simple
+  $ /virtalenv/bin/python form_declarative.py
+
 form_declarative.py
 ~~~~~~~~~~~~~~~~~~~
 
