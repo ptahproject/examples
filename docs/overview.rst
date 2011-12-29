@@ -54,7 +54,7 @@ Dependencies:
 ptah_simpleauth
 ===============
 
-The `ptah_simpleauth` package demonstrates::
+The `ptah_simpleauth` package demonstrates:
 
   * Pyramid developer toolbar
   
@@ -71,6 +71,20 @@ ptah_minicms
 
 A miniature Content Management System (CMS) example which provides a 
 sophisticated experience and demonstration of Ptah capabilities.  
+
+This package provides:
+
+  * Content types/models: File, Page, and Folder
+  
+  * Layout preview functionality
+  
+  * Sharing UI to assign users roles per item or folder
+  
+  * Homepage view
+  
+  * User management by using :py:mod:`ptah_crowd`
+  
+  * Folder operations on items: cut, copy, paste and rename.
 
 Dependencies:
 
@@ -102,7 +116,7 @@ fields are added manually.
 layout.py
 ~~~~~~~~~
 
-Ptah provides a :py:mod:`pyramid.renderer` independent mechanism to provide
+Ptah provides a :py:mod:`pyramid.renderers` independent mechanism to provide
 template composition (e.g. template inheritance).  The :py:mod:`ptah_minicms`
 provides an example of layout preview which draws borders around the layouts.
 
