@@ -1,6 +1,10 @@
 ptah examples
 ==============
 
+You can read the rendered documentation at readthedocs.org:
+
+* `ptah-examples.readthedocs.org <http://ptah-examples.readthedocs.org/en/latest/index.html>`_
+
 This git repository contains self-contained WSGI applications which demonstrate various aspects of the pyramid-based Ptah environment. This repository contains:
 
 * ``ptah_models`` - 2 form examples, homepage, management ui
