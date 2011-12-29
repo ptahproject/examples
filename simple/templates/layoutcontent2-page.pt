@@ -1,0 +1,6 @@
+<br /><br /><br />
+<h4>Content2 page</h4>
+
+<div>
+  ${structure: wrapped_content}
+</div>

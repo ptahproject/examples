@@ -1,0 +1,25 @@
+Context: ${context.__class__}
+<br />
+<br />
+
+<ul>
+  <li>
+    <a href="/">Root: /</a>
+  </li>
+  <li>
+    <a href="/folder1/">Folder: /folder1/</a>
+  </li>
+  <li>
+    <a href="/folder1/content/">Content: /folder1/content/</a>
+  </li>
+  <li>
+    <a href="/folder2/">Folder: /folder2/</a>
+  </li>
+  <li>
+    <a href="/folder2/content/">Content: /folder2/content/</a>
+  </li>
+</ul>
+
+<br />
+<b><a href="${request.resource_url(context)}layout-preview.html">
+    Layout preview</a></b> 
