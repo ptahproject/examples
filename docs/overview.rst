@@ -5,7 +5,7 @@ Overview
 The `examples repository <https://github.com/ptahproject/examples>`_ contains
 several Python packages which demonstrate various Ptah usage.  The examples
 are not released individually as packages.  You are expected to ``git clone``
-the repo and work from it.
+this repository and work from there.
 
 ============
 Installation
