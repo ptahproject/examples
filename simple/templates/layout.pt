@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Examples</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    
+    ${view.include('bootstrap')}
+    <tal:block content="structure view.render_includes()" />
+  </head>
+
+<body>
+  <div class="topbar">
+    <div class="fill">
+      <div class="container">
+	<h3><a href="/">Examples</a></h3>
+      </div>
+    </div>
+  </div>
+  
+  <div style="margin-top: 60px;">
+    <div class="inner">
+      <div class="container">
+	${structure: view.render_messages()}
+	
+	${structure: wrapped_content}
+      </div>
+    </div>
+  </div>
+</body>
