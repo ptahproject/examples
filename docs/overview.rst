@@ -107,7 +107,7 @@ python environment you have installed ptah.
 Example of running on of the simple examples::
 
   $ cd examples/simple
-  $ /virtalenv/bin/python form_declarative.py
+  $ /virtualenv/bin/python form_declarative.py
 
 form_declarative.py
 ~~~~~~~~~~~~~~~~~~~
