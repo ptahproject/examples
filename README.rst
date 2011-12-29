@@ -12,6 +12,8 @@ This git repository contains self-contained WSGI applications which demonstrate 
 
 * ``ptah_minicms`` - a hierarchical cms supporting local roles, management ui, auth/user source, actions, layout preview and File, Page and Folder content types. 
 
+* ``simple`` - 1 file module examples which demonstrate various ptah features.
+
 All of these examples can be used in conjunction with ``ptah_crowd`` which provides more features.  Some ``ptah_crowd`` features include user management, registration, reset password.  You can find ``ptah_crowd`` in the ptahproject github.
 
 Quick start

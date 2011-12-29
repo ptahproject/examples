@@ -79,12 +79,31 @@ Dependencies:
   * :py:mod:`ptah_crowd`
 
 
-ptah_misc
-=========
+simple
+======
 
-`ptah_misc` is different than the other examples.  The ptah_misc is not
-a Python package but a Folder full of example modules.  Each module is
+`simple` is different than the other examples.  The `simple` folder is not
+a Python package but a collection of example modules.  Each module is
 an example of a specific aspect of Ptah.  The goal is to show, in isolation,
-a particular feature/function of Ptah.  These are usually 1 python file.
+a particular feature/function of Ptah. 
+
+form_declarative.py
+~~~~~~~~~~~~~~~~~~~
+
+Example of using :py:mod:`ptah.form` declartively. The form example subclasses
+:py:class:`ptah.form.Form` and has a validator.
+
+form_imperative.py
+~~~~~~~~~~~~~~~~~~
+
+Example of using :py:mod:`ptah.form` imperatively.  The form is instantiated and
+fields are added manually.  
+
+layout.py
+~~~~~~~~~
+
+Ptah provides a :py:mod:`pyramid.renderer` independent mechanism to provide
+template composition (e.g. template inheritance).  The :py:mod:`ptah_minicms`
+provides an example of layout preview which draws borders around the layouts.
 
 
