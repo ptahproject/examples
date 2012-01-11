@@ -7,8 +7,8 @@ README = open(os.path.join(here, 'README.txt')).read()
 CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
 requires = [
-    'ptah >= 0.2',
-    'ptah_crowd >= 0.1',
+    'ptah >= 0.3dev',
+    'ptah_crowd >= 0.2',
     'pyramid >= 1.3dev',
     'pyramid_beaker >= 0.6.1',
     'pyramid_exclog',
@@ -21,7 +21,7 @@ test_requires = [
 
 
 setup(name='ptah_minicms',
-      version='0.1',
+      version='0.2',
       description='ptah_minicms',
       long_description=README + '\n\n' +  CHANGES,
       classifiers=[

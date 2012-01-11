@@ -10,6 +10,28 @@ from ptah_models import models
 auth_policy = AuthTktAuthenticationPolicy('secret')
 session_factory = UnencryptedCookieSessionFactoryConfig('secret')
 
+POPULATE_MODELS_CONTENT = 'ptah-models-content'
+
+@ptah.populate(POPULATE_MODELS_CONTENT,
+               title='Create ptah_models content',
+               requires=(ptah.POPULATE_DB_SCHEMA,))
+def bootstrap_data(registry):
+    """ create sample content """
+    
+    links = {'sqlalchemy':'http://www.sqlalchemy.org/',
+             'pyramid':'http://docs.pylonsproject.org/',
+             'enfoldsystems':'http://www.enfoldsystems.com/',
+             'bootstrap':'http://twitter.github.com/bootstrap/',
+             'chameleon':'http://chameleon.repoze.org/',
+             'sqlite':'http://www.sqlite.org/'}
+
+    for name, url in links.items():
+        if not ptah.get_session().query(models.Link)\
+               .filter(models.Link.href == url).all():
+            link = models.Link(title=name,
+                               href=url,
+                               color='#0000ff')
+            ptah.get_session().add(link)
 
 # WSGI Entry Point
 def main(global_config, **settings):
@@ -43,28 +65,6 @@ def main(global_config, **settings):
         disable_modules = ['rest', 'introspect', 'apps', 'permissions', 'settings'])
 
     config.commit()
-
-    # create sql tables
-    Base = ptah.get_base()
-    Base.metadata.create_all()
-
-    # Bootstrap application data with some links; we use SQLAlchemy
-    # directly so there are not application events being fired to apply owner
-
-    links = {'sqlalchemy':'http://www.sqlalchemy.org/',
-             'pyramid':'http://docs.pylonsproject.org/',
-             'enfoldsystems':'http://www.enfoldsystems.com/',
-             'bootstrap':'http://twitter.github.com/bootstrap/',
-             'chameleon':'http://chameleon.repoze.org/',
-             'sqlite':'http://www.sqlite.org/'}
-
-    for name, url in links.items():
-        if not ptah.get_session().query(models.Link)\
-               .filter(models.Link.href == url).all():
-            link = models.Link(title=name,
-                               href=url,
-                               color='#0000ff')
-            ptah.get_session().add(link)
 
     # Need to commit links to database manually.
     import transaction

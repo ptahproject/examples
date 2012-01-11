@@ -43,3 +43,10 @@ Now we start it up.  --reload is optional.  If you edit a Python file the WSGI s
 Goto http://localhost:6543/ and you can read and experiment.  Look at http://ptahproject.readthedocs.org/en/latest/index.html for latest Ptah documentation.
 
 You can find support on irc.freenode.net on #ptahproject or #pyramid
+
+Troubleshooting
+---------------
+
+If you run into a problem with the examples you get further by using the source checkout.
+
+As of Jan. 11. 2012 the examples require `master` of ptah and ptah_crowd until 0.3 of those packages are released.

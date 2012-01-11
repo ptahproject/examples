@@ -12,7 +12,20 @@ from ptah_simpleauth.auth import User
 auth_policy = AuthTktAuthenticationPolicy('secret')
 session_factory = UnencryptedCookieSessionFactoryConfig('secret')
 
+POPULATE_SIMPLEAUTH_USERS = 'ptah-simpleauth-users'
 
+@ptah.populate(POPULATE_SIMPLEAUTH_USERS,
+               title='Create ptah_simpleauth users',
+               requires=(ptah.POPULATE_DB_SCHEMA,))
+def bootstrap_data(registry):
+    """ create ptah_simpleauth users """
+    Session = ptah.get_session()
+    # admin user
+    user = Session.query(User).first()
+    if user is None:
+        user = User('Admin', 'admin', 'admin@ptahproject.org', '12345')
+        Session.add(user)
+    
 # WSGI Entry Point
 def main(global_config, **settings):
     """ This is your application startup."""
@@ -41,24 +54,5 @@ def main(global_config, **settings):
     config.add_static_view('ptah_simpleauth', 'ptah_simpleauth:static')
 
     config.scan()
-
-    # create sql tables
-    Base = ptah.get_base()
-    Base.metadata.create_all()
-    transaction.commit()
-
-    # populate database
-    config.commit()
-    config.begin()
-
-    Session = ptah.get_session()
-
-    # admin user
-    user = Session.query(User).first()
-    if user is None:
-        user = User('Admin', 'admin', 'admin@ptahproject.org', '12345')
-        Session.add(user)
-
-    transaction.commit()
 
     return config.make_wsgi_app()
