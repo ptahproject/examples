@@ -14,7 +14,7 @@ log = logging.getLogger(__name__)
              renderer='ptah_simpleauth:templates/layout.pt', use_global_views=True)
 class Layout(ptah.View):
     """ simple layout """
-    
+
     links = {'sqlalchemy':'http://www.sqlalchemy.org/',
              'pyramid':'http://docs.pylonsproject.org/',
              'enfoldsystems':'http://www.enfoldsystems.com/',

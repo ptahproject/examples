@@ -13,7 +13,7 @@ class Root(object):
 
     __name__ = ''
     __parent__ = None
-    
+
     def __init__(self, request):
         self.request = request
 
@@ -91,7 +91,7 @@ class PageLayout(ptah.View):
     """ same as PageLayout, it uses 'page' as parent layout """
 
 ####################################
-    
+
 
 @view_config(context=object,
              wrapper=ptah.wrap_layout('workspace'),
@@ -115,7 +115,7 @@ class PageLayout(ptah.View):
     layer - identifier, import order does matter, last imported wins
     """
 
-    
+
 @ptah.layout(
     'workspace', Root,
     parent='page',

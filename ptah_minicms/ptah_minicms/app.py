@@ -22,13 +22,13 @@ POPULATE_MINICMS_CONTENT = 'ptah-minicms-content'
                requires=(ptah_crowd.POPULATE_CREATE_ADMIN,))
 def bootstrap_data(registry):
     """ create sample content """
-    
+
     crowd_cfg = ptah.get_settings(ptah_crowd.CFG_ID_CROWD, registry)
     admin_id = crowd_cfg['admin-login']
     admin = ptah_crowd.CrowdFactory().get_user_bylogin(admin_id)
-    
+
     root = APP_FACTORY()
-    
+
     # give manager role to admin
     if admin.__uri__ not in root.__local_roles__:
         root.__local_roles__[admin.__uri__] = [Manager.id]

@@ -25,7 +25,7 @@ def bootstrap_data(registry):
     if user is None:
         user = User('Admin', 'admin', 'admin@ptahproject.org', '12345')
         Session.add(user)
-    
+
 # WSGI Entry Point
 def main(global_config, **settings):
     """ This is your application startup."""
