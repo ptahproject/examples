@@ -23,16 +23,24 @@
   </div>
   </div>
 
-  <!-- Example row of columns -->
   <div class="row">
-    <div class="span6">
-      <h2>Models</h2>
-      <p>This sample application comes with an example model, Link.
-        You can add, edit and delete them in the Manage UI.  You
-        can look on the filesystem in models.py to see the Link model.
+  <div class="span6">
+      <h2>Users</h2>
+      <p>Ptah comes with a default user subsystem.  You can use it to
+        create, edit, delete, suspend and activate users.  The user
+        system is invoked in __init__.py of your application to create
+        the default login/password for this application.
       </p>
-      <p><a class="btn" href="/ptah-manage/models/">View models &raquo;</a></p>
-    </div>
+      <p><a class="btn" href="/ptah-manage/crowd/">Manage users &raquo;</a></p>
+  </div>
+  <div class="span6" >
+    <span jca="chat" tal:condition="user" />
+  </div>
+  </div>
+  
+  <hr />
+  
+  <div class="row">
     <div class="span6">
       <h2>Settings</h2>
       <p>You started Ptah with telling paster to serve a .ini file.
@@ -45,18 +53,15 @@
       <p><a class="btn" href="/ptah-manage/settings/">View settings &raquo;</a></p>
     </div>
     <div class="span6">
-      <h2>Users</h2>
-      <p>Ptah comes with a default user subsystem.  You can use it to
-        create, edit, delete, suspend and activate users.  The user
-        system is invoked in __init__.py of your application to create
-        the default login/password for this application.
+      <h2>Models</h2>
+      <p>This sample application comes with an example model, Link.
+        You can add, edit and delete them in the Manage UI.  You
+        can look on the filesystem in models.py to see the Link model.
       </p>
-      <p><a class="btn" href="/ptah-manage/crowd/">View users &raquo;</a></p>
-    </div>
-
-    <div class="span6" jca="chat" tal:condition="user">
+      <p><a class="btn" href="/ptah-manage/models/">View models &raquo;</a></p>
     </div>
   </div>
+  
 
   <hr>
   <div class="row">
@@ -82,7 +87,7 @@
       </p>
       <p><a class="btn" href="/ptah-manage/fields/">View fields &raquo;</a></p>
     </div>
-
+    
     <div class="span5">
       <h2>Much more</h2>
       <p>We have disabled quite a few Manage UI modules for the initial
