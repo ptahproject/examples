@@ -1,5 +1,5 @@
 <div class="topbar" tal:define="app_url request.application_url;
-				root_url request.resource_url(request.root)">
+                                root_url request.resource_url(request.root)">
   <div class="fill">
     <div class="container">
       <h3><a href="${root_url}">Layout example</a></h3>
@@ -11,7 +11,7 @@
   <div class="inner">
     <div class="container">
       ${structure: view.render_messages()}
-      
+
       ${structure: wrapped_content}
     </div>
   </div>

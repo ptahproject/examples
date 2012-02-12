@@ -1,7 +1,7 @@
 ${view.include('colorpicker')}
 
 <script>
-  $(function() {    
+  $(function() {
     $('#colorSelector').ColorPicker({
         color: '#0000ff',
         onShow: function (colpkr) {
@@ -21,21 +21,21 @@ ${view.include('colorpicker')}
   });
 </script>
 
-<input type="text" 
+<input type="text"
        tal:attributes="id context.id;
-		       name context.name;
-		       class context.klass;
-		       title context.title;
-		       lang context.lang;
-		       value context.form_value;
-		       disabled context.disabled;
-		       tabindex context.tabindex;
-		       readonly context.readonly;
-		       alt context.alt;
-		       accesskey context.accesskey;
-		       size context.size;
-		       maxlength context.maxlength" />
-  
+                       name context.name;
+                       class context.klass;
+                       title context.title;
+                       lang context.lang;
+                       value context.form_value;
+                       disabled context.disabled;
+                       tabindex context.tabindex;
+                       readonly context.readonly;
+                       alt context.alt;
+                       accesskey context.accesskey;
+                       size context.size;
+                       maxlength context.maxlength" />
+
 <span id="colorSelector">
   <div style="background-color: ${context.form_value}"></div>
 </span>

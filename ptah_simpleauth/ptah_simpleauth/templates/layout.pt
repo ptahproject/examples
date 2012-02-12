@@ -17,33 +17,33 @@
             <li class="active"><a href="/">Home</a></li>
           </ul>
           <p class="pull-right" tal:condition="view.user is not None">
-	    Logged in as 
-	    <a href="#">${view.user.name}</a>
-	    <a href="/logout.html">Logout</a></p>
+            Logged in as
+            <a href="#">${view.user.name}</a>
+            <a href="/logout.html">Logout</a></p>
           <p class="pull-right" tal:condition="view.user is None">
-	    <a href="/login.html">Login</a>
-	  </p>
-	</div>
+            <a href="/login.html">Login</a>
+          </p>
+        </div>
       </div>
     </div>
 
     <div style="margin-top: 60px;">
       <div class="container-fluid">
-	<div class="sidebar">
-	  <div class="well">
-	    <h5>Links</h5>
-	    <ul>
-	      <li tal:repeat="(name, href) python: view.links.items()">
+        <div class="sidebar">
+          <div class="well">
+            <h5>Links</h5>
+            <ul>
+              <li tal:repeat="(name, href) python: view.links.items()">
             <a href="${href}">${name}</a>
-	      </li>
-	    </ul>
-	  </div>
-	</div>
+              </li>
+            </ul>
+          </div>
+        </div>
 
-	<div class="content">
+        <div class="content">
           ${structure: view.render_messages()}
           ${structure: wrapped_content}
-	</div>
+        </div>
       </div>
     </div>
   </body>

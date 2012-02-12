@@ -11,14 +11,14 @@
     </p>
     <p tal:condition="user is not None">
       <a class="btn primary large" href="/ptah-manage/">
-	Goto Ptah Manage UI &raquo;
+        Goto Ptah Manage UI &raquo;
       </a>
     </p>
     <p tal:condition="user is None">
       <a class="btn primary large" href="/login.html">Login first &raquo;</a>
     </p>
   </div>
-  
+
   <!-- Example row of columns -->
   <div class="row">
     <div class="span6">
@@ -50,7 +50,7 @@
       <p><a class="btn" href="/ptah-manage/crowd/">View users &raquo;</a></p>
     </div>
   </div>
-  
+
   <hr>
   <div class="row">
     <div class="span6">
@@ -62,7 +62,7 @@
         No homebrewed SQL usage here.  Everything you learn you can be
         applied outside of Ptah.
       </p>
-      
+
       <p><a class="btn" href="/ptah-manage/sqla/">View tables &raquo;</a></p>
     </div>
     <div class="span5">
@@ -75,7 +75,7 @@
       </p>
       <p><a class="btn" href="/ptah-manage/fields/">View fields &raquo;</a></p>
     </div>
-    
+
     <div class="span5">
       <h2>Much more</h2>
       <p>We have disabled quite a few Manage UI modules for the initial

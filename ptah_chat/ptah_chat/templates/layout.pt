@@ -6,8 +6,8 @@
 
     ${view.include('bootstrap')}
     ${view.include('bootstrap-js')}
-    ${view.include('pyramid-jca')}
     <tal:block content="structure view.render_includes()" />
+    ${structure: request.render_jca_includes()}
   </head>
   <body>
     <div class="navbar navbar-fixed-top">
@@ -39,7 +39,7 @@
                     <a href="/login.html">Sign in</a>
                 </li>
             </ul>
-	</div>
+        </div>
       </div>
     </div>
 

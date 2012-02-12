@@ -6,10 +6,10 @@ ex.Chat = function(ca, container) {
     this.jca = ca
     this.container = container
     this.users = {}
-    this.logger = jca.getLogger('ex.Chat');
+    this.logger = jca.get_logger('ex.Chat');
 
     this.conn = new jca.Connection(
-        '//'+window.location.host+'/ws-chat', this,
+        jca.gen_url('/ws-chat'), this,
         {autoconnect: true,
          logger: this.logger}
     )
