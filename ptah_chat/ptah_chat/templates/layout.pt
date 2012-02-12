@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Ptah Chat Example</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+
+    ${view.include('bootstrap')}
+    ${view.include('bootstrap-js')}
+    ${view.include('pyramid-jca')}
+    <tal:block content="structure view.render_includes()" />
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Project ptah_chat</a>
+          <ul class="nav">
+            <li class="active"><a href="/">Home</a></li>
+          </ul>
+
+            <tal:block tal:condition="not view.isAnon">
+                <ul class="nav pull-right">
+                    <li class="active">
+                        <a href="#">
+                          ${view.user.name or view.user.login}:
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/ptah-manage/">Manage</a>
+                    </li>
+                    <li>
+                        <a href="/logout.html">Logout</a>
+                    </li>
+                </ul>
+            </tal:block>
+
+            <ul class="nav pull-right" tal:condition="view.isAnon">
+                <li class="active">
+                    <a href="/login.html">Sign in</a>
+                </li>
+            </ul>
+	</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 60px;">
+      <div class="container">
+          ${structure: view.render_messages()}
+          ${structure: wrapped_content}
+      </div>
+    </div>
+  </body>
+</html>
