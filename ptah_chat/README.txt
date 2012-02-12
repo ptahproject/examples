@@ -50,5 +50,6 @@ To run chat example use following command::
     $ cd ptah_chat/
     $ ./pchat/bin/pserve ./settings.ini
 
+On Windows settings.ini should be changed from 0.0.0.0 to 127.0.0.1
 
-To see chat several user have to logged in.
+More than 1 user will need to be logged in and viewing the homepage.
