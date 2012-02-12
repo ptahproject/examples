@@ -11,18 +11,18 @@
     -->
 
     <tal:block content="structure rendered_includes" />
-    <link type="text/css" rel="stylesheet" 
-	  href="${request.static_url('ptah_models:static/app.css')}" />
+    <link type="text/css" rel="stylesheet"
+          href="${request.static_url('ptah_models:static/app.css')}" />
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" 
-	  href="${request.static_url('ptah_models:static/ico/favicon.ico')}" />
-    <link rel="apple-touch-icon" 
-	  href="${request.static_url('ptah_models:static/ico/apple-touch-icon.png')}" />
-    <link rel="apple-touch-icon" sizes="72x72" 
-	  href="${request.static_url('ptah_models:static/ico/apple-touch-icon-72x72.png')}" />       
-    <link rel="apple-touch-icon" sizes="114x114" 
-	  href="${request.static_url('ptah_models:static/ico/apple-touch-icon-114x114.png')}" />
+    <link rel="shortcut icon"
+          href="${request.static_url('ptah_models:static/ico/favicon.ico')}" />
+    <link rel="apple-touch-icon"
+          href="${request.static_url('ptah_models:static/ico/apple-touch-icon.png')}" />
+    <link rel="apple-touch-icon" sizes="72x72"
+          href="${request.static_url('ptah_models:static/ico/apple-touch-icon-72x72.png')}" />
+    <link rel="apple-touch-icon" sizes="114x114"
+          href="${request.static_url('ptah_models:static/ico/apple-touch-icon-114x114.png')}" />
   </head>
 
   <body>
@@ -51,12 +51,12 @@
               </span>
             </li>
           </ul>
-          
-	  <a href="/links/add.html">Add new link</a>
+
+          <a href="/links/add.html">Add new link</a>
         </div>
       </div>
       <div class="content">
-	${structure: rendered_messages}
+        ${structure: rendered_messages}
 
         <!-- Main hero unit for a primary marketing message or call to action -->
         <div class="hero-unit">

@@ -7,9 +7,9 @@ README = open(os.path.join(here, 'README.txt')).read()
 CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
 requires = [
-    'ptah >= 0.3dev',
-    'ptah_crowd >= 0.2',
-    'pyramid >= 1.3dev',
+    'ptah >= 0.3.0',
+    'ptah_crowd >= 0.2dev',
+    'pyramid >= 1.3a5',
     'pyramid_beaker >= 0.6.1',
     'pyramid_exclog',
     'pyramid_debugtoolbar']

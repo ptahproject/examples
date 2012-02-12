@@ -22,13 +22,13 @@ POPULATE_MINICMS_CONTENT = 'ptah-minicms-content'
                requires=(ptah_crowd.POPULATE_CREATE_ADMIN,))
 def bootstrap_data(registry):
     """ create sample content """
-    
+
     crowd_cfg = ptah.get_settings(ptah_crowd.CFG_ID_CROWD, registry)
     admin_id = crowd_cfg['admin-login']
     admin = ptah_crowd.CrowdFactory().get_user_bylogin(admin_id)
-    
+
     root = APP_FACTORY()
-    
+
     # give manager role to admin
     if admin.__uri__ not in root.__local_roles__:
         root.__local_roles__[admin.__uri__] = [Manager.id]
@@ -67,46 +67,7 @@ def main(global_config, **settings):
     # enable ptah manage
     config.ptah_init_manage()
 
-    # create sql tables
-    Base = ptah.get_base()
-    Base.metadata.create_all()
-
     # populate database
-    config.commit()
-    config.begin()
-
-    # your application configuration
-    ptah.auth_service.set_userid(ptah.SUPERUSER_URI)
-    root = APP_FACTORY()
-
-    # admin user
-    #Session = ptah.get_session()
-    #user = Session.query(ptah_crowd.CrowdUser).first()
-    #if user is None:
-    #    user = ptah_crowd.CrowdUser(
-    #        title='Admin',
-    #        login='admin',
-    #        email='admin@ptahproject.org')
-    #    user.password = ptah.pwd_tool.encode('12345')
-    #    user.properties.validated = True
-    #    ptah_crowd.CrowdFactory().add(user)
-
-    # give manager role to admin
-    #if user.__uri__ not in root.__local_roles__:
-    #    root.__local_roles__[user.__uri__] = [Manager.id]
-
-    # set authcontext as admin user
-    #ptah.auth_service.set_userid(user.__uri__)
-
-    # create default page
-    #if 'front-page' not in root.keys():
-    #    page = Page(title='Welcome to Ptah')
-    #    page.text = open(
-    #        abspath_from_asset_spec('ptah_minicms:welcome.pt'), 'rb').read()
-
-    #    root['front-page'] = page
-
-    # We are not in a web request; we need to manually commit.
-    transaction.commit()
+    config.ptah_populate()
 
     return config.make_wsgi_app()

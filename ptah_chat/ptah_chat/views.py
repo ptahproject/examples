@@ -10,8 +10,11 @@ from ptah import form
 # logger, check Debug Toolbar logging section or stdout
 log = logging.getLogger(__name__)
 
+@ptah.layout(name="ptah-page", context=DefaultRootFactory,
+             renderer='ptah_chat:templates/layout.pt', use_global_views=True)
+
 @ptah.layout(context=DefaultRootFactory,
-             renderer='ptah_simpleauth:templates/layout.pt', use_global_views=True)
+             renderer='ptah_chat:templates/layout.pt', use_global_views=True)
 class Layout(ptah.View):
     """ simple layout """
 
@@ -27,7 +30,7 @@ class Layout(ptah.View):
         self.isAnon = self.user is None
         self.manage_url = ptah.manage.get_manage_url(self.request)
 
-@view_config(renderer='ptah_simpleauth:templates/homepage.pt',
+@view_config(renderer='ptah_chat:templates/homepage.pt',
              wrapper=ptah.wrap_layout(), route_name='root')
 class HomepageView(object):
     """ Homepage view """

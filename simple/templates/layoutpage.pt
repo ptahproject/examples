@@ -10,8 +10,8 @@
 
     <body>
       <!--
-	This is rendered content that is beeing passed to 
-	layout.render method
+        This is rendered content that is beeing passed to
+        layout.render method
       </-->
       ${structure: wrapped_content}
     </body>

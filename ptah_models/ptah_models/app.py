@@ -17,7 +17,7 @@ POPULATE_MODELS_CONTENT = 'ptah-models-content'
                requires=(ptah.POPULATE_DB_SCHEMA,))
 def bootstrap_data(registry):
     """ create sample content """
-    
+
     links = {'sqlalchemy':'http://www.sqlalchemy.org/',
              'pyramid':'http://docs.pylonsproject.org/',
              'enfoldsystems':'http://www.enfoldsystems.com/',

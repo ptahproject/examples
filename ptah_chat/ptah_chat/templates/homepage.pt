@@ -1,10 +1,12 @@
   <!-- Main hero unit for a primary marketing message or call to action -->
+  <div class="row">
+  <div class="span12">
   <div class="hero-unit">
-    <h1>Welcome to ptah_minicms!</h1>
-    <p>This packages provides an example content management system (CMS).
-      The user experience is primitive, uses bootstrap CSS/JS and provides
-      a hierarchy for users to create content.  You can easily create your
-      own models, forms, and fields and have them show up in the system.
+    <h1>Welcome to ptah_chat!</h1>
+    <p>The simpleauth application uses Ptah, a modern web publishing framework.
+      Ptah enables you to build web applications and web sites - very fast.  The
+      best part is Ptah works like you expect.  It uses well-documented technologies.
+      You can pick what features you want and leave behind the opinions which you disagree.
     </p>
     <p>The default login is <strong>admin</strong> and the
       password is <strong>12345</strong>
@@ -18,6 +20,8 @@
       <a class="btn primary large" href="/login.html">Login first &raquo;</a>
     </p>
   </div>
+  </div>
+  </div>
 
   <!-- Example row of columns -->
   <div class="row">
@@ -29,7 +33,7 @@
       </p>
       <p><a class="btn" href="/ptah-manage/models/">View models &raquo;</a></p>
     </div>
-    <div class="span5">
+    <div class="span6">
       <h2>Settings</h2>
       <p>You started Ptah with telling paster to serve a .ini file.
         You can use the same software with different settings and have
@@ -40,7 +44,7 @@
       </p>
       <p><a class="btn" href="/ptah-manage/settings/">View settings &raquo;</a></p>
     </div>
-    <div class="span5">
+    <div class="span6">
       <h2>Users</h2>
       <p>Ptah comes with a default user subsystem.  You can use it to
         create, edit, delete, suspend and activate users.  The user
@@ -48,6 +52,9 @@
         the default login/password for this application.
       </p>
       <p><a class="btn" href="/ptah-manage/crowd/">View users &raquo;</a></p>
+    </div>
+
+    <div class="span6" jca="chat" tal:condition="user">
     </div>
   </div>
 
