@@ -33,7 +33,11 @@
       </p>
       <p><a class="btn" href="/ptah-manage/crowd/">Manage users &raquo;</a></p>
   </div>
-  <div class="span6" >
+  <div class="span6">
+    <tal:stubchat condition="not: user">
+    <h2>Online Users</h2>
+    <p>You must log in to see available users.</p>
+    </tal:stubchat>
     <span jca="chat" tal:condition="user" />
   </div>
   </div>
