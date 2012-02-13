@@ -1,15 +1,7 @@
-""" internal chat
-
-init - init connection
-list - list active users
-joined - user has joined
-disconnected - user has disconnected
-typing - user is typing
-message - message
-"""
+""" internal chat """
 import ptah
 from datetime import datetime
-from pyramid_jca import Session, handler
+from pyramid_jca import Session
 from pyramid_sockjs import SessionManager
 
 
