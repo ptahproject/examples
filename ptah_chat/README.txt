@@ -14,7 +14,6 @@ Installation
 
 2. Install cython gevent 1.0b1::
 
-    $ ./pchat/bin/pip install cython
     $ ./pchat/bin/pip install http://gevent.googlecode.com/files/gevent-1.0b1.tar.gz
 
 3. Install ptah & ptah_crowd:
