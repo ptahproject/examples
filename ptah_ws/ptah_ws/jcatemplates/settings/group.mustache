@@ -1,0 +1,27 @@
+<div data-content="settings-{{name}}">
+  <div class="page-header">
+    <div class="actions pull-right">
+      <a class="btn btn-large" href="#" title="Modify"
+        data-action="modify" data-name="{{name}}">
+        <i class="icon-plus"></i> Modify
+      </a>
+    </div>
+    <h1>{{title}}</h1>
+    <p>{{&description}}</p>
+  </div>
+  <div>
+    <p>
+      <table class="table table-striped">
+        {{#schema}}
+          <tr>
+            <td>{{name}}</td>
+            <td>{{type}}</td>
+            <td>{{value}}</td>
+            <td>{{title}}</td>
+            <td><em>{{description}}</em></td>
+          </tr>
+        {{/schema}}
+      </table>
+    </p>
+  </div>
+</div>
