@@ -4,38 +4,22 @@ define(
     function(jca, $) {
         "use strict";
 
-        var Chat = function(ca, container) {
-            this.jca = ca
-            this.container = container
-            this.users = {}
-            this.logger = jca.get_logger('Chat');
-            
-            this.conn = new jca.Connection(
-                jca.gen_url('/ws-chat'), this,
-                {autoconnect: true,
-                 logger: this.logger}
-            )
-        };
+        var Chat = jca.component('chat', {
         
-        Chat.prototype = {
-            toString: function() {
-                return "Chat"
+            init: function() {
+                this.users = {}
+                this.logger = jca.get_logger('Chat');
             },
-            
+        
             on_connect: function() {
-                var conn = this.conn;
                 this.container.append(this.templates.render('list'));
                 this.ws = $('#internal-chat');
-                conn.send('init');
+                this.send('init');
                 
                 this.ws.delegate('div.btn', 'click', this, this.on_user_click);
             },
             
-            on_disconnect: function() {
-            },
-            
-            on_message: function(data, msg) {
-                var type = msg.data['type'];
+            on_message: function(type, data, msg) {
                 if (type==='message') {
                     var win = this.users[data['uid']];
                     if (win) {
@@ -79,7 +63,7 @@ define(
                     that.users[uid].on_click();
                 };
             }
-        };
+        })
         
         
         var ChatWindow = function(manager, uid, user) {
@@ -89,7 +73,7 @@ define(
             this.uid = uid;
             this.user = user;
             this.data = {uid: uid, name: user};
-            this.window;
+            this.window = null;
             this.window_hidden = true;
             
             this.manager.ws.append(this.templates.render('user', this.data));
@@ -171,7 +155,7 @@ define(
                 );
                 this.messages.animate({scrollTop: this.messages.height()});
                 
-                this.manager.conn.send('message', {uid: this.uid, message: msg})
+                this.manager.send('message', {uid: this.uid, message: msg})
                 el.val('');
             },
             

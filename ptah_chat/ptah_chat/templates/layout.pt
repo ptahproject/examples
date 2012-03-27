@@ -4,10 +4,10 @@
     <title>Ptah Chat Example</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 
+    ${view.include('curl')}
     ${view.include('bootstrap')}
     ${view.include('bootstrap-js')}
     <tal:block content="structure view.render_includes()" />
-    ${structure: request.render_jca_includes()}
   </head>
   <body>
     <div class="navbar navbar-fixed-top">
@@ -49,5 +49,7 @@
           ${structure: wrapped_content}
       </div>
     </div>
+    
+    ${structure: request.render_jca_includes('chat')}
   </body>
 </html>

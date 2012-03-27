@@ -3,7 +3,7 @@ from pyramid.config import Configurator
 from pyramid.session import UnencryptedCookieSessionFactoryConfig
 
 import ptah
-from .chat import ChatSessionManager
+from .chat import ChatProtocol
 
 session_factory = UnencryptedCookieSessionFactoryConfig('secret')
 
@@ -20,13 +20,12 @@ def main(global_config, **settings):
     config.ptah_init_manage(managers = ['*'])
     config.ptah_populate()
 
-    # internal chat
-    config.add_sockjs_route(
-        'chat', '/ws-chat',
-        session_manager=ChatSessionManager('chat', config.registry))
+    # enable jca
+    config.register_jca_sm()
 
+    # internal chat
     config.register_jca_component(
-        'chat', 'ex.Chat', 'ptah_chat:jca/')
+        'chat', 'ptah_chat:jca/', protocol = ChatProtocol)
 
     # we love them routes
     config.add_route('root', '/')
