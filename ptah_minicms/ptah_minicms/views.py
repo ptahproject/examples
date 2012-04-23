@@ -116,7 +116,7 @@ class Adding(ptah.View):
         subpath = self.request.subpath
         if subpath and subpath[0]:
             tname = subpath[0]
-            tinfo = ptahcms.get_type('cms-type:%s'%tname)
+            tinfo = ptah.get_type('type:%s'%tname)
             if tinfo is None:
                 return HTTPNotFound
 
