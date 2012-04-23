@@ -3,6 +3,7 @@ from pyramid.view import view_config
 from pyramid.httpexceptions import HTTPFound, HTTPNotFound
 
 import ptah
+import ptahcms
 from ptah_minicms import settings
 from ptah_minicms.root import SiteRoot
 
@@ -21,8 +22,8 @@ def my_view(request):
 
 
 @view_config(
-    context=ptah.cms.Content,
-    permission=ptah.cms.View,
+    context=ptahcms.Content,
+    permission=ptahcms.View,
     wrapper=ptah.wrap_layout(),
     renderer="ptah_minicms:templates/contentview.pt")
 
@@ -42,23 +43,23 @@ class DefaultContentView(ptah.form.DisplayForm):
 
 @view_config(
     'edit.html',
-    context=ptah.cms.Content,
+    context=ptahcms.Content,
     wrapper=ptah.wrap_layout(),
-    permission=ptah.cms.ModifyContent)
-class EditForm(ptah.cms.EditForm):
+    permission=ptahcms.ModifyContent)
+class EditForm(ptahcms.EditForm):
     """ Content edit form """
 
 
 @view_config(
-    context=ptah.cms.Container,
-    permission=ptah.cms.View,
+    context=ptahcms.Container,
+    permission=ptahcms.View,
     wrapper=ptah.wrap_layout(),
     renderer="ptah_minicms:templates/listing.pt")
 
 @view_config(
     'listing.html',
-    context=ptah.cms.Container,
-    permission=ptah.cms.View,
+    context=ptahcms.Container,
+    permission=ptahcms.View,
     wrapper=ptah.wrap_layout(),
     renderer="ptah_minicms:templates/listing.pt")
 
@@ -70,7 +71,7 @@ class ContainerListing(ptah.View):
         registry = request.registry
 
         self.deleteContent = ptah.check_permission(
-            ptah.cms.DeleteContent, context)
+            ptahcms.DeleteContent, context)
 
         # cms(uri).read()
         # cms(uri).create(type)
@@ -81,13 +82,13 @@ class ContainerListing(ptah.View):
         if self.deleteContent and 'form.buttons.remove' in request.POST:
             uris = self.request.POST.getall('item')
             for uri in uris:
-                ptah.cms.wrap(uri).delete()
+                ptahcms.wrap(uri).delete()
 
                 self.message("Selected content items have been removed.")
 
 
 @view_config(
-    'rename.html', context=ptah.cms.Container,
+    'rename.html', context=ptahcms.Container,
     wrapper=ptah.wrap_layout(),
     renderer="ptah_minicms:templates/folder_rename.pt")
 
@@ -96,7 +97,7 @@ class RenameForm(ptah.View):
 
 
 @view_config(
-    '+', context=ptah.cms.Container,
+    '+', context=ptahcms.Container,
     wrapper=ptah.wrap_layout(),
     renderer="ptah_minicms:templates/adding.pt")
 
@@ -115,7 +116,7 @@ class Adding(ptah.View):
         subpath = self.request.subpath
         if subpath and subpath[0]:
             tname = subpath[0]
-            tinfo = ptah.cms.get_type('cms-type:%s'%tname)
+            tinfo = ptahcms.get_type('cms-type:%s'%tname)
             if tinfo is None:
                 return HTTPNotFound
 
@@ -124,7 +125,7 @@ class Adding(ptah.View):
         return super(Adding, self).__call__()
 
 
-class AddContentForm(ptah.cms.AddForm):
+class AddContentForm(ptahcms.AddForm):
 
     def __init__(self, tinfo, form, request):
         super(AddContentForm, self).__init__(form, request)

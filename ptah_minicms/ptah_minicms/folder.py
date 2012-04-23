@@ -1,14 +1,14 @@
 """ Generic folder implementation """
-from ptah import cms
+import ptahcms
 from ptah_minicms.permissions import AddFolder
 
 
-class Folder(cms.Container):
+class Folder(ptahcms.Container):
     """
-    A Folder model which subclasses ptah.cms.Container
+    A Folder model which subclasses ptahcms.Container
     """
 
-    __type__ = cms.Type(
+    __type__ = ptahcms.Type(
         'folder',
         title = 'Folder',
         description = 'A folder which can contain other items.',

@@ -1,11 +1,12 @@
 import ptah
+import ptahcms
 from pyramid.view import view_config
 from pyramid.httpexceptions import HTTPFound
 
 
 @view_config(
     'sharing.html', context=ptah.ILocalRolesAware,
-    permission=ptah.cms.ShareContent, wrapper=ptah.wrap_layout(),
+    permission=ptahcms.ShareContent, wrapper=ptah.wrap_layout(),
     renderer='templates/sharing.pt')
 
 class SharingForm(ptah.form.Form):

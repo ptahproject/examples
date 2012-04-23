@@ -3,17 +3,18 @@ import sqlalchemy as sqla
 from pyramid.view import view_config
 
 import ptah
+import ptahcms
 from ptah_minicms.permissions import AddPage
 
 
-class Page(ptah.cms.Content):
+class Page(ptahcms.Content):
     """
-    A Page model which subclasses ptah.cms.Content
+    A Page model which subclasses ptahcms.Content
     """
 
     __tablename__ = 'ptah_minicms_pages'
 
-    __type__ = ptah.cms.Type(
+    __type__ = ptahcms.Type(
         'page',
         title = 'Page',
         description = 'A page in the site.',
@@ -27,7 +28,7 @@ class Page(ptah.cms.Content):
 
 @view_config(
     context=Page,
-    permission=ptah.cms.View,
+    permission=ptahcms.View,
     wrapper=ptah.wrap_layout(),
     renderer='ptah_minicms:templates/page.pt')
 class PageView(ptah.View):

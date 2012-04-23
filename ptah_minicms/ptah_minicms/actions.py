@@ -1,41 +1,42 @@
 """ default actions """
 import ptah
+import ptahcms
 
 CATEGORY = 'cms'
 
 ptah.uiaction(
-    ptah.cms.Content,
+    ptahcms.Content,
     **{'id': 'view',
        'title': 'View',
        'action': '',
-       'permission': ptah.cms.View,
+       'permission': ptahcms.View,
        'sort_weight': 0.5,
        'category': CATEGORY})
 
 ptah.uiaction(
-    ptah.cms.Content,
+    ptahcms.Content,
     **{'id': 'edit',
        'title': 'Edit',
        'action': 'edit.html',
-       'permission': ptah.cms.ModifyContent,
+       'permission': ptahcms.ModifyContent,
        'sort_weight': 0.6,
        'category': CATEGORY})
 
 ptah.uiaction(
-    ptah.cms.Container,
+    ptahcms.Container,
     **{'id': 'adding',
        'title': 'Add content',
        'action': '+/',
-       'permission': ptah.cms.AddContent,
+       'permission': ptahcms.AddContent,
        'sort_weight': 5.0,
        'category': CATEGORY})
 
 ptah.uiaction(
-    ptah.cms.Container,
+    ptahcms.Container,
     **{'id': 'listing',
        'title': 'Folder listing',
        'action': 'listing.html',
-       'permission': ptah.cms.View,
+       'permission': ptahcms.View,
        'sort_weight': 6.0,
        'category': CATEGORY})
 
@@ -44,16 +45,16 @@ ptah.uiaction(
     **{'id': 'sharing',
        'title': 'Sharing',
        'action': 'sharing.html',
-       'permission': ptah.cms.ShareContent,
+       'permission': ptahcms.ShareContent,
        'sort_weight': 10.0,
        'category': CATEGORY})
 
 ptah.uiaction(
-    ptah.cms.Content,
+    ptahcms.Content,
     **{'id': 'layout-preview',
        'title': 'Layout preview',
        'description': 'view parameter is any registered view name for object',
        'action': 'layout-preview.html?view=',
-       'permission': ptah.cms.View,
+       'permission': ptahcms.View,
        'sort_weight': 20.0,
        'category': CATEGORY})

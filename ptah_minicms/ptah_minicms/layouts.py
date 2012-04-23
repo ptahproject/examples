@@ -1,5 +1,6 @@
 import ptah
-from ptah import view, cms, manage, auth_service
+import ptahcms
+from ptah import view, manage, auth_service
 
 from ptah_minicms.root import SiteRoot
 from ptah_minicms.actions import CATEGORY
@@ -36,7 +37,7 @@ class WorkspaceLayout(ptah.View):
 
 
 @ptah.layout(
-    '', ptah.cms.Content, parent="workspace",
+    '', ptahcms.Content, parent="workspace",
     renderer="ptah_minicms:templates/layout-content.pt")
 class ContentLayout(ptah.View):
     """ Content layout """
