@@ -13,7 +13,6 @@ auth_policy = AuthTktAuthenticationPolicy('secret')
 session_factory = UnencryptedCookieSessionFactoryConfig('secret')
 
 POPULATE_SIMPLEAUTH_USERS = 'ptah-simpleauth-users'
-
 @ptah.populate(POPULATE_SIMPLEAUTH_USERS,
                title='Create ptah_simpleauth users',
                requires=(ptah.POPULATE_DB_SCHEMA,))

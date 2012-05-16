@@ -23,10 +23,26 @@ is out-of-the-box.
 Quick start
 -----------
 
-Install into your virtualenv::
+Activate virtualenv on nix::
 
-  $ /path/to/virtualenv/bin/python setup.py develop
+  $ source /path/to/venv/bin/activate
+  
+Activate virtualenv r on Windows:
+
+  c:\path\to\venv\Scripts\activate.exe
+
+Change to the ptah_simpleauth directory::
+
+  (venv) $ cd ptah_simpleauth
+
+Install the `ptah_simpleauth` package::
+
+  (venv) ptah_simpleauth$ python setup.py develop
+
+Run the schema generation::
+
+  (venv) ptah_simpleauth$ ptah-populate settings.ini -a
 
 Then start pyramid::
 
-  $ /path/to/virtualenv/bin/pserve settings.ini
+  $ (venv) ptah_simpleauth$ pserve settings.ini

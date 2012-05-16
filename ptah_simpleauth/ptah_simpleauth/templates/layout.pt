@@ -9,8 +9,8 @@
     <tal:block content="structure view.render_includes()" />
   </head>
   <body>
-    <div class="topbar">
-      <div class="topbar-inner">
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
         <div class="container-fluid">
           <a class="brand" href="/">Project ptah_simpleauth</a>
           <ul class="nav">
@@ -27,9 +27,9 @@
       </div>
     </div>
 
-    <div style="margin-top: 60px;">
-      <div class="container-fluid">
-        <div class="sidebar">
+    <div style="margin-top: 60px;" class="row-fluid">
+      <div class="container">
+        <div class="span2">
           <div class="well">
             <h5>Links</h5>
             <ul>
@@ -40,7 +40,7 @@
           </div>
         </div>
 
-        <div class="content">
+        <div class="content span10">
           ${structure: view.render_messages()}
           ${structure: wrapped_content}
         </div>
