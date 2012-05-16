@@ -1,4 +1,3 @@
-  <!-- Main hero unit for a primary marketing message or call to action -->
   <div class="hero-unit">
     <h1>Welcome to ptah_simpleauth!</h1>
     <p>The simpleauth application uses Ptah, a modern web publishing framework.
@@ -11,7 +10,7 @@
     </p>
     <p tal:condition="user is not None">
       <a class="btn primary large" href="/ptah-manage/">
-        Goto Ptah Manage UI &raquo;
+        Goto Management UI &raquo;
       </a>
     </p>
     <p tal:condition="user is None">
@@ -21,7 +20,7 @@
 
   <!-- Example row of columns -->
   <div class="row">
-    <div class="span6">
+    <div class="span5">
       <h2>Models</h2>
       <p>This sample application comes with an example model, Link.
         You can add, edit and delete them in the Manage UI.  You
@@ -40,20 +39,11 @@
       </p>
       <p><a class="btn" href="/ptah-manage/settings/">View settings &raquo;</a></p>
     </div>
-    <div class="span5">
-      <h2>Users</h2>
-      <p>Ptah comes with a default user subsystem.  You can use it to
-        create, edit, delete, suspend and activate users.  The user
-        system is invoked in __init__.py of your application to create
-        the default login/password for this application.
-      </p>
-      <p><a class="btn" href="/ptah-manage/crowd/">View users &raquo;</a></p>
-    </div>
   </div>
 
   <hr>
   <div class="row">
-    <div class="span6">
+    <div class="span5">
       <h2>SQL</h2>
       <p>Ptah uses SQLAlchemy for its ORM and SQL library.
         While the default is sqlite, Ptah will run on all
@@ -75,7 +65,10 @@
       </p>
       <p><a class="btn" href="/ptah-manage/fields/">View fields &raquo;</a></p>
     </div>
-
+  </div>
+  
+  <hr>
+  <div class="row">
     <div class="span5">
       <h2>Much more</h2>
       <p>We have disabled quite a few Manage UI modules for the initial
@@ -84,7 +77,5 @@
         right for you.  Feel free to re-enable those modules in your
         .ini file.
       </p>
-      <!--
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-          -->
     </div>
+  </div>
