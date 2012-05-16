@@ -3,13 +3,12 @@ from pyramid.view import view_config
 from pyramid.httpexceptions import HTTPFound
 
 import ptah
-from ptah import form, cms
+from ptah import form
 
 from ptah_models import models
 
 # logger, check Debug Toolbar logging section or stdout
 log = logging.getLogger(__name__)
-
 
 class Telephone(form.Regex):
     """ An example validator.  See ptah.form.validators for more info."""

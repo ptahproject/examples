@@ -21,10 +21,24 @@ is out-of-the-box.
 Quick start
 -----------
 
-Install into your virtualenv::
+Activate virtualenv on nix::
 
-  $ /path/to/virtualenv/bin/python setup.py develop
+  $ source /path/to/virtualenv/bin/activate
+  
+Activate virtualenv r on Windows:
+
+  c:\path\to\virtualenv\scripts\activate.exe
+
+Change to the ptah_models directory.
+
+Install the `ptah_models` package into python::
+
+  $ (virtualenv) python setup.py develop
+
+Run the schema generation::
+
+  $ (virtualenv) ptah-populate settings.ini -a
 
 Then start pyramid::
 
-  $ /path/to/virtualenv/bin/pserve settings.ini
+  $ (virtualenv) pserve settings.ini

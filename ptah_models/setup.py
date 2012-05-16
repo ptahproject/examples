@@ -7,8 +7,8 @@ README = open(os.path.join(here, 'README.txt')).read()
 CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
 requires = [
-    'ptah>=0.3.0',
-    'pyramid>=1.3a5',
+    'ptah>=0.5.0',
+    'pyramid>=1.3',
     'pyramid_exclog',
     'pyramid_debugtoolbar']
 
@@ -19,7 +19,7 @@ test_requires = [
 
 
 setup(name='ptah_models',
-      version='0.2',
+      version='0.5',
       description='ptah_models',
       long_description=README + '\n\n' +  CHANGES,
       classifiers=[

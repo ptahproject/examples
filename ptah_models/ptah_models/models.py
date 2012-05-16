@@ -2,24 +2,20 @@ import ptah
 import sqlalchemy as sqla
 from pyramid.httpexceptions import HTTPNotFound
 
-
-class Link(ptah.cms.Node):
+@ptah.type('link')
+class Link(ptah.get_base()):
     """ A basic model. """
 
-    __tablename__ = 'ptah_models_links'
+    __tablename__ = 'links'
 
     # Required primary field
-    __id__ = sqla.Column('id', sqla.Integer,
-                         sqla.ForeignKey('ptah_nodes.id'),
-                         primary_key=True)
+    __id__ = sqla.Column('id', sqla.Integer, primary_key=True)
 
     # Your custom fields
     title = sqla.Column(sqla.Unicode)
     href = sqla.Column(sqla.Unicode)
-    color = sqla.Column(sqla.Unicode, info={'field_type': 'colorpicker'})
-
-    # Declare it as a Ptah Model
-    __type__ = ptah.cms.Type('link')
+    color = sqla.Column(sqla.Unicode)
+    #XXX , info={'field_type': 'colorpicker'})
 
 
 def factory(request):
