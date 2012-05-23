@@ -22,7 +22,7 @@
       <div class="container">
         ${structure: view.render_messages()}
 
-        ${structure: wrapped_content}
+        ${structure: view.render()}
       </div>
     </div>
   </div>

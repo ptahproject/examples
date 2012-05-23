@@ -93,26 +93,25 @@ Dependencies:
   * :py:mod:`ptah_crowd`
 
 
-simple
-======
+simple_forms
+============
 
-`simple` is different than the other examples.  The `simple` folder is not
-a Python package but a collection of example modules.  Each module is
-an example of a specific aspect of Ptah.  The goal is to show, in isolation,
-a particular feature/function of Ptah. 
+This directory contains two examples of form generation using Ptah's form
+library. The idea is to show how to generate forms using the two configuration
+approaches provided by the form library.
 
-These examples do not use ``pserve`` to run these examples.  Just use the
-python environment you have installed ptah.
+These examples do not use ``pserve`` to run.  Just use the python environment
+where you have installed ptah.
 
-Example of running on of the simple examples::
+Example of running one of the simple_forms examples::
 
-  $ cd examples/simple
+  $ cd examples/simple_forms
   $ /virtualenv/bin/python form_declarative.py
 
 form_declarative.py
 ~~~~~~~~~~~~~~~~~~~
 
-Example of using :py:mod:`ptah.form` declartively. The form example subclasses
+Example of using :py:mod:`ptah.form` declaratively. The form example subclasses
 :py:class:`ptah.form.Form` and has a validator.
 
   .. literalinclude:: ../simple/form_declarative.py
@@ -127,12 +126,19 @@ fields are added manually.
   .. literalinclude:: ../simple/form_imperative.py
      :linenos:
 
-layout.py
-~~~~~~~~~
+
+simple_layout
+=============
 
 Ptah provides a :py:mod:`pyramid.renderers` independent mechanism to provide
 template composition (e.g. template inheritance).  The :py:mod:`ptah_minicms`
 provides an example of layout preview which draws borders around the layouts.
+
+This is a simple example of Ptah layouts, which shows how to define layouts and
+how to assign them to different parts of a site.
+
+layout.py
+~~~~~~~~~
 
   .. literalinclude:: ../simple/layout.py
      :linenos:

@@ -21,7 +21,7 @@ def redirect(request):
 
 @view_config(
     'test-form.html',
-    wrapper=ptah.wrap_layout(),
+    renderer='__main__:templates/layout.pt',
     context=DefaultRootFactory)
 class MyForm(form.Form):
 
