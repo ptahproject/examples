@@ -21,7 +21,7 @@ def redirect(request):
 
 @view_config(
     'test-form.html',
-    wrapper=ptah.wrap_layout(),
+    renderer='__main__:templates/layout.pt',
     context=DefaultRootFactory)
 def form_view(context, request):
 
@@ -73,7 +73,8 @@ def form_view(context, request):
                       'description': 'Context description'}
 
     # render form
-    return myform()
+    myform.update()
+    return {'view': myform}
 
 
 if __name__ == '__main__':
