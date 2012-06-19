@@ -1,4 +1,4 @@
-[twilioapp.js]
+[gallery.js]
 modules =
    jquery
    handlebars
