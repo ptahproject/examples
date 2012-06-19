@@ -5,6 +5,8 @@
       <a href="#" data-action="select_gallery" data-id="{{id}}">
         {{#if photo}}
         <img style="width:260px" src="/_photos/{{photo}}">
+        {{#else}}
+        <img src="http://placehold.it/260x180">
         {{/if}}
       </a>
       <div class="caption">
