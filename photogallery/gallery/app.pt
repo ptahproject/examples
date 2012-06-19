@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head tal:define="root getattr(request, 'root', None)">
+    <title>${getattr(root, 'title', '')}</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+
+    ${request.include_library('curl', 'gallery')}
+    ${structure: request.render_includes()}
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container" data-tag="topbar">
+          <a class="brand" href="#">Photo Gallery</a>
+          <ul class="nav">
+            <li>
+              <a href="#" data-action="browse">
+                Browse All
+              </a>
+            </li>
+          </ul>
+
+          <ul class="nav" style="display:none" data-tag="menu">
+            <li>
+              <a href="#" data-action="galleries">
+                My Galleries
+              </a>
+            </li>
+            <li>
+              <a href="#" data-action="addgallery">
+                + Add gallery
+              </a>
+            </li>
+          </ul>
+          <ul class="nav pull-right" >
+            <li class="active">
+              <a href="#" data-tag="username">
+                Guest
+              </a>
+            </li>
+            <li>
+              <button href="#" data-action="login"
+                      data-tag="login" class="btn btn-primary">Login</button>
+              <button href="#" data-action="logout" style="display:none"
+                      data-tag="logout" class="btn btn-primary">Logout</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div style="margin-top: 60px;" class="container">
+      ${structure: request.render_amd_container('gallery')}
+    </div>
+    ${structure: request.render_amd_includes('gallery')}
+  </body>
+</html>
