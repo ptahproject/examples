@@ -24,6 +24,12 @@ define(
 
             , on_disconnect: function() {
                 this.reset()
+
+                this.menu_items.find(
+                    '[data-tag="username"]').html('Guest')
+                this.menu_items.find('[data-tag="login"]').show()
+                this.menu_items.find('[data-tag="logout"]').hide()
+                this.menu_items.find('[data-tag="menu"]').hide()
             }
 
             , msg_config: function(data) {
@@ -57,6 +63,16 @@ define(
             , msg_gallery: function(data) {
                 this.workspace.empty()
                 this.workspace.append(templates.render('gallery', data))
+            }
+
+            , action_logout: function(options) {
+                this.workspace.empty()
+                this.menu_items.find(
+                    '[data-tag="username"]').html('Guest')
+                this.menu_items.find('[data-tag="login"]').show()
+                this.menu_items.find('[data-tag="logout"]').hide()
+                this.menu_items.find('[data-tag="menu"]').hide()
+                this.send('logout')
             }
 
             , action_login: function(options) {
@@ -114,6 +130,10 @@ define(
                 this.send('gallery', options)
             }
 
+            , action_removephoto: function(options) {
+                this.send('removephoto', options)
+            }
+
             , action_uploadphoto: function(options) {
                 var win = form.Window.extend({
                     template: templates.get('upload'),
@@ -151,22 +171,24 @@ define(
                     , upload: function(files) {
                         // upload files
                         var idx = 0
+                        var form = this
                         var that = this.__parent__
 
                         var process_file = function() {
                             var file = files[idx]
                             var reader = new FileReader()
                             reader.onload = function (ev) {
-                                that.send('upload',
-                                          {id: options.id,
-                                           data: reader.result,
-                                           filename: file.name,
-                                           mimetype: file.type})
+                                if (file.type.slice(0, 6) === 'image/')
+                                    that.send('upload',
+                                              {id: options.id,
+                                               data: reader.result,
+                                               filename: file.name,
+                                               mimetype: file.type})
                                 idx += 1
                                 if (idx < files.length) {
                                     process_file()
                                 } else {
-                                    that.dialog = false
+                                    form.destroy()
                                 }
                             }
                             reader.readAsBinaryString(file)
@@ -176,6 +198,5 @@ define(
                 })
                 var upload = new win(this)
             }
-            
         })
 })

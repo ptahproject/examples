@@ -3,7 +3,9 @@
   <li class="span3">
     <div class="thumbnail">
       <a href="#" data-action="select_gallery" data-id="{{id}}">
-        <img src="http://placehold.it/260x180">
+        {{#if photo}}
+        <img style="width:260px" src="/_photos/{{photo}}">
+        {{/if}}
       </a>
       <div class="caption">
         <div class="pull-right">

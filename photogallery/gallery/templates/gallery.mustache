@@ -9,20 +9,18 @@
 
 <div class="row">
   <ul class="thumbnails">
-    {{#each info}}
+    {{#each photos}}
     <li class="span3">
       <div class="thumbnail">
-        <a href="#" data-action="select_gallery" data-id={{id}}">
-          <img src="http://placehold.it/260x180">
-        </a>
+        <img style="width:260px" src="/_photos/{{id}}">
         <div class="caption">
           <div class="pull-right">
-            <a href="#" title="Edit"
-              data-action="editgallery" data-id="{{id}}"><i class="icon-edit"></i></a>
+            <!--a href="#" title="Edit"
+              data-action="editphoto" data-id="{{id}}"><i class="icon-edit"></i></a-->
               <a href="#" title="Remove"
-                data-action="removegallery" data-id="{{id}}"><i class="icon-remove"></i></a>
+                data-action="removephoto" data-id="{{id}}"><i class="icon-remove"></i></a>
           </div>
-          <h5>{{title}}</h5>
+          <h5>{{name}}</h5>
           <p>{{description}}</p>
         </div>
       </div>

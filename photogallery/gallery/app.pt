@@ -12,13 +12,13 @@
       <div class="navbar-inner">
         <div class="container" data-tag="topbar">
           <a class="brand" href="#">Photo Gallery</a>
-          <ul class="nav">
+          <!--ul class="nav">
             <li>
               <a href="#" data-action="browse">
                 Browse All
               </a>
             </li>
-          </ul>
+          </ul-->
 
           <ul class="nav" style="display:none" data-tag="menu">
             <li>

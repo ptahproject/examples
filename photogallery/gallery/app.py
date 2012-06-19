@@ -36,6 +36,9 @@ def main(global_config, **settings):
                      use_global_views=True)
     config.add_view(route_name='facebook_process', view=facebook_process)
 
+    # view photo
+    config.add_route('view_photo', pattern='/_photos/{id}')
+
     # app route
     config.add_route('root', '/')
     config.add_view(route_name='root', renderer='gallery:app.pt')

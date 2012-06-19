@@ -32,4 +32,4 @@ class Photo(ptah.get_base()):
         self.created = datetime.utcnow()
         self.modified = datetime.utcnow()
 
-        super(File, self).__init__(**kw)
+        super(Photo, self).__init__(**kw)
